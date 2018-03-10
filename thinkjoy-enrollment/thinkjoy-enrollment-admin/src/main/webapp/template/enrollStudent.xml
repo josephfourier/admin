@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<table cnname="学生基本信息" name="ucenter_student"  colnum="32" maxrows="5000">
+       <column position="1" chname="学生名称" name="studentName" datatype="String" dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+              <errormessage>
+                     <entry valtype="maxLength" value="学生姓名长度不能大于64位"/>
+              </errormessage>
+       </column>
+       <column position="2" chname="性别" name="sex" datatype="String" dataclass="dictType" dictcode="DICT_SEX">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+              </validation>
+       </column>
+       <column position="3" chname="民族" name="nation" datatype="String" dataclass="dictType" dictcode="DICT_NATION">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+              </validation>
+       </column>
+       <column position="4" chname="籍贯" name="origin" datatype="String" dataclass="assembleType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+       <column position="5" chname="出生日期" name="birthday" datatype="Date"  dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="regEx" value="^\d{4}-\d{2}-\d{2}$"/>
+              </validation>
+              <errormessage>
+                     <entry valtype="regEx" value="日期格式错误：yyyy-MM-dd"/>
+              </errormessage>
+       </column>
+       <column position="6" chname="政治面貌" name="politics" datatype="String"  dataclass="dictType" dictcode="DICT_POLITICS">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+              </validation>
+       </column>
+       <column position="7" chname="身份证号" name="idcard" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="regEx" value="^\d{17}[0-9Xx]|\d{14}[0-9Xx]$"/>
+              </validation>
+       </column>
+       <column position="8" chname="户口所在地" name="domicile" datatype="String"  dataclass="assembleType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="maxLength" value="128"/>
+              </validation>
+       </column>
+       <column position="9" chname="生源地" name="fromplace" datatype="String"  dataclass="assembleType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+       <column position="10" chname="手机号码" name="phone" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="regEx" value="^1\d{10}$"/>
+              </validation>
+              <errormessage>
+                     <entry valtype="regEx" value="手机号格式错误"/>
+              </errormessage>
+       </column>
+       <column position="11" chname="毕业学校" name="gradSchool" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+       <column position="12" chname="毕业类别" name="studentType" datatype="String"  dataclass="dictType" dictcode="DICT_TARGET">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+       <column position="13" chname="毕业时间" name="gradTime" datatype="Date"  dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="regEx" value="^\d{4}-\d{2}-\d{2}$"/>
+              </validation>
+              <errormessage>
+                     <entry valtype="regEx" value="日期格式错误：yyyy-MM-dd"/>
+              </errormessage>
+       </column>
+       <column position="14" chname="通讯地址" name="address" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="maxLength" value="128"/>
+              </validation>
+       </column>
+       <column position="15" chname="招生批次名称" name="batchName" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+       <column position="16" chname="招生年度" name="batchYear" datatype="Integer"  dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="regEx" value="^\d{4}$"/>
+              </validation>
+       </column>
+       <column position="17" chname="第一志愿" name="firstVol" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+
+       <!--华丽的分割线,以上为必填字段-->
+
+       <column position="18" chname="第二志愿" name="secondVol" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+       <column position="19" chname="录取志愿" name="enrollVol" datatype="String"  dataclass="dictType" dictcode="DICT_ENROLLWILL">
+              <validation>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+       <column position="20" chname="成绩总分数" name="score" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="10"/>
+              </validation>
+       </column>
+       <column position="21" chname="招生人员名称" name="teacherName" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+       <column position="22" chname="班主任姓名" name="gradHeadteacher" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="64"/>
+              </validation>
+       </column>
+       <column position="23" chname="考生号" name="examineeNumber" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="128"/>
+              </validation>
+       </column>
+       <column position="24" chname="准考证号" name="examnum" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="32"/>
+              </validation>
+       </column>
+       <column position="25" chname="固定电话" name="familyPhone" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="32"/>
+              </validation>
+       </column>
+       <column position="26" chname="邮箱" name="mail" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="128"/>
+              </validation>
+       </column>
+       <column position="27" chname="邮政编码" name="postalCode" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="16"/>
+              </validation>
+       </column>
+       <column position="28" chname="是否住校" name="isLiveschool" datatype="Boolean"  dataclass="dictType" dictcode="DICT_ISLIVESCHOOL"/>
+       <column position="29" chname="是否为贫困生" name="isPoor" datatype="Boolean"  dataclass="dictType" dictcode="DICT_ISPOOR"/>
+       <column position="30" chname="户籍性质" name="domicileType" datatype="String"  dataclass="dictType" dictcode="DICT_DOMICILETYPE"/>
+       <column position="31" chname="描述" name="description" datatype="String"  dataclass="commonType">
+              <validation>
+                     <entry valtype="maxLength" value="256"/>
+              </validation>
+       </column>
+
+
+</table>

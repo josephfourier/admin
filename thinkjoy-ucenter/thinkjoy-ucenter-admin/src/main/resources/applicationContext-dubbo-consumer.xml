@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+
+    <dubbo:application name="thinkjoy-ucenter-admin"/>
+
+    <dubbo:registry file="./thinkjoy-ucenter-admin-dubbo.cache" address="${dubbo.registry.address}"/>
+
+    <!-- 订阅服务 -->
+    <dubbo:consumer check="false"/>
+
+    <!-- 行政区划 -->
+    <dubbo:reference id="ucenterAreaService" interface="com.thinkjoy.ucenter.rpc.api.UcenterAreaService" mock="true"/>
+    <!--组织机构-->
+    <dubbo:reference id="ucenterAgencyService" interface="com.thinkjoy.ucenter.rpc.api.UcenterAgencyService" mock="true"/>
+    <!--字典表-->
+    <dubbo:reference id="ucenterDictService" interface="com.thinkjoy.ucenter.rpc.api.UcenterDictService" mock="true"/>
+    <!--字典值表-->
+    <dubbo:reference id="ucenterDictValuesService" interface="com.thinkjoy.ucenter.rpc.api.UcenterDictValuesService" mock="true"/>
+    <!--学校表-->
+    <dubbo:reference id="ucenterSchoolService" interface="com.thinkjoy.ucenter.rpc.api.UcenterSchoolService" mock="true"/>
+    <!--用户身份表-->
+    <dubbo:reference id="ucenterUserIdentityService" interface="com.thinkjoy.ucenter.rpc.api.UcenterUserIdentityService" mock="true"/>
+    <!--用户表-->
+    <dubbo:reference id="ucenterUserService" interface="com.thinkjoy.ucenter.rpc.api.UcenterUserService" mock="true"/>
+    <!--用户类型表-->
+    <dubbo:reference id="ucenterUsertypeService" interface="com.thinkjoy.ucenter.rpc.api.UcenterUsertypeService" mock="true"/>
+    <!-- 接口服务 -->
+    <dubbo:reference id="upmsApiService" interface="com.thinkjoy.upms.rpc.api.UpmsApiService" mock="true"/>
+    <!-- 权限 -->
+    <dubbo:reference id="upmsPermissionService" interface="com.thinkjoy.upms.rpc.api.UpmsPermissionService" mock="true"/>
+    <!--学生表-->
+    <dubbo:reference id="ucenterStudentService" interface="com.thinkjoy.ucenter.rpc.api.UcenterStudentService" mock="true"/>
+
+    <!-- 用户 -->
+    <dubbo:reference id="upmsUserService" interface="com.thinkjoy.upms.rpc.api.UpmsUserService" mock="true"/>
+    <!-- 学校院系 -->
+    <dubbo:reference id="ucenterFacultyService" interface="com.thinkjoy.ucenter.rpc.api.UcenterFacultyService" mock="true"/>
+    <!-- 学校专业 -->
+    <dubbo:reference id="ucenterSpecialtyService" interface="com.thinkjoy.ucenter.rpc.api.UcenterSpecialtyService" mock="true"/>
+    <!-- 学校专业方向 -->
+    <dubbo:reference id="ucenterTrainingdirectionService" interface="com.thinkjoy.ucenter.rpc.api.UcenterTrainingdirectionService" mock="true"/>
+    <!-- 学校班级-->
+    <dubbo:reference id="ucenterClassService" interface="com.thinkjoy.ucenter.rpc.api.UcenterClassService" mock="true"/>
+    <!-- 学校老师-->
+    <dubbo:reference id="ucenterTeacherService" interface="com.thinkjoy.ucenter.rpc.api.UcenterTeacherService" mock="true"/>
+    <!-- 行政区划 -->
+    <dubbo:reference id="ucenterDepartmentService" interface="com.thinkjoy.ucenter.rpc.api.UcenterDepartmentService" mock="true"/>
+
+    <!-- 学校老师-->
+    <dubbo:reference id="ucenterTeacherSpecialtyService" interface="com.thinkjoy.ucenter.rpc.api.UcenterTeacherSpecialtyService" mock="true"/>
+    <!-- 学校老师-->
+    <dubbo:reference id="ucenterTeacherClassService" interface="com.thinkjoy.ucenter.rpc.api.UcenterTeacherClassService" mock="true"/>
+    <!-- 职务-->
+    <dubbo:reference id="ucenterPostService" interface="com.thinkjoy.ucenter.rpc.api.UcenterPostService" mock="true"/>
+    <!-- 部门-院系/班级表-->
+    <dubbo:reference id="ucenterDepartmentBusService" interface="com.thinkjoy.ucenter.rpc.api.UcenterDepartmentBusService" mock="true"/>
+    <!-- 部门-老师-职务表-->
+    <dubbo:reference id="ucenterTeacherPostService" interface="com.thinkjoy.ucenter.rpc.api.UcenterTeacherPostService" mock="true"/>
+    <!-- 数据同步日志表 -->
+    <dubbo:reference id="ucenterDatasyncLogService" interface="com.thinkjoy.ucenter.rpc.api.UcenterDatasyncLogService" mock="true"/>
+
+    <dubbo:reference id="ucenterPaySettingService" interface="com.thinkjoy.ucenter.rpc.api.UcenterPaySettingService" mock="true"/>
+</beans>

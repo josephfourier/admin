@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ucenter.dao.mapper.UcenterUserMapper">
+    <resultMap id="BaseResultMap" type="com.thinkjoy.ucenter.dao.model.UcenterUser">
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="uid" jdbcType="VARCHAR" property="uid"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="fullname" jdbcType="VARCHAR" property="fullname"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="student_code" jdbcType="VARCHAR" property="studentCode"/>
+        <result column="examinee_number" jdbcType="VARCHAR" property="examineeNumber"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="idcard" jdbcType="VARCHAR" property="idcard"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="create_ip" jdbcType="VARCHAR" property="createIp"/>
+        <result column="last_login_time" jdbcType="BIGINT" property="lastLoginTime"/>
+        <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp"/>
+        <result column="creator" jdbcType="VARCHAR" property="creator"/>
+        <result column="ctime" jdbcType="BIGINT" property="ctime"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="year" jdbcType="INTEGER" property="year"/>
+        <result column="school_code" jdbcType="VARCHAR" property="schoolCode"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    user_id, uid, username, fullname, password, salt, email, student_code, examinee_number, 
+    phone, idcard, nickname, sex, avatar, create_ip, last_login_time, last_login_ip, 
+    creator, ctime, description, status, year, school_code
+  </sql>
+    <select id="selectByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserExample"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from ucenter_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ucenter_user
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ucenter_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserExample">
+        delete from ucenter_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUser" useGeneratedKeys="true"
+            keyProperty="userId">
+    insert into ucenter_user (user_id, uid, username, 
+      fullname, password, salt, 
+      email, student_code, examinee_number, 
+      phone, idcard, nickname, 
+      sex, avatar, create_ip, 
+      last_login_time, last_login_ip, creator, 
+      ctime, description, status, 
+      year, school_code)
+    values (#{userId,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{fullname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{studentCode,jdbcType=VARCHAR}, #{examineeNumber,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{createIp,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=BIGINT}, #{lastLoginIp,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{ctime,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{year,jdbcType=INTEGER}, #{schoolCode,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUser" useGeneratedKeys="true"
+            keyProperty="userId">
+        insert into ucenter_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="fullname != null">
+                fullname,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="salt != null">
+                salt,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="studentCode != null">
+                student_code,
+            </if>
+            <if test="examineeNumber != null">
+                examinee_number,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="idcard != null">
+                idcard,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="avatar != null">
+                avatar,
+            </if>
+            <if test="createIp != null">
+                create_ip,
+            </if>
+            <if test="lastLoginTime != null">
+                last_login_time,
+            </if>
+            <if test="lastLoginIp != null">
+                last_login_ip,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="ctime != null">
+                ctime,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="year != null">
+                year,
+            </if>
+            <if test="schoolCode != null">
+                school_code,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="fullname != null">
+                #{fullname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="studentCode != null">
+                #{studentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="examineeNumber != null">
+                #{examineeNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+                #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="createIp != null">
+                #{createIp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastLoginTime != null">
+                #{lastLoginTime,jdbcType=BIGINT},
+            </if>
+            <if test="lastLoginIp != null">
+                #{lastLoginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="ctime != null">
+                #{ctime,jdbcType=BIGINT},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="year != null">
+                #{year,jdbcType=INTEGER},
+            </if>
+            <if test="schoolCode != null">
+                #{schoolCode,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserExample"
+            resultType="java.lang.Long">
+        select count(*) from ucenter_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update ucenter_user
+        <set>
+            <if test="record.userId != null">
+                user_id = #{record.userId,jdbcType=INTEGER},
+            </if>
+            <if test="record.uid != null">
+                uid = #{record.uid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.username != null">
+                username = #{record.username,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fullname != null">
+                fullname = #{record.fullname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.password != null">
+                password = #{record.password,jdbcType=VARCHAR},
+            </if>
+            <if test="record.salt != null">
+                salt = #{record.salt,jdbcType=VARCHAR},
+            </if>
+            <if test="record.email != null">
+                email = #{record.email,jdbcType=VARCHAR},
+            </if>
+            <if test="record.studentCode != null">
+                student_code = #{record.studentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.examineeNumber != null">
+                examinee_number = #{record.examineeNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="record.phone != null">
+                phone = #{record.phone,jdbcType=VARCHAR},
+            </if>
+            <if test="record.idcard != null">
+                idcard = #{record.idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="record.nickname != null">
+                nickname = #{record.nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.sex != null">
+                sex = #{record.sex,jdbcType=VARCHAR},
+            </if>
+            <if test="record.avatar != null">
+                avatar = #{record.avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createIp != null">
+                create_ip = #{record.createIp,jdbcType=VARCHAR},
+            </if>
+            <if test="record.lastLoginTime != null">
+                last_login_time = #{record.lastLoginTime,jdbcType=BIGINT},
+            </if>
+            <if test="record.lastLoginIp != null">
+                last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="record.creator != null">
+                creator = #{record.creator,jdbcType=VARCHAR},
+            </if>
+            <if test="record.ctime != null">
+                ctime = #{record.ctime,jdbcType=BIGINT},
+            </if>
+            <if test="record.description != null">
+                description = #{record.description,jdbcType=VARCHAR},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=VARCHAR},
+            </if>
+            <if test="record.year != null">
+                year = #{record.year,jdbcType=INTEGER},
+            </if>
+            <if test="record.schoolCode != null">
+                school_code = #{record.schoolCode,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update ucenter_user
+        set user_id = #{record.userId,jdbcType=INTEGER},
+        uid = #{record.uid,jdbcType=VARCHAR},
+        username = #{record.username,jdbcType=VARCHAR},
+        fullname = #{record.fullname,jdbcType=VARCHAR},
+        password = #{record.password,jdbcType=VARCHAR},
+        salt = #{record.salt,jdbcType=VARCHAR},
+        email = #{record.email,jdbcType=VARCHAR},
+        student_code = #{record.studentCode,jdbcType=VARCHAR},
+        examinee_number = #{record.examineeNumber,jdbcType=VARCHAR},
+        phone = #{record.phone,jdbcType=VARCHAR},
+        idcard = #{record.idcard,jdbcType=VARCHAR},
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+        sex = #{record.sex,jdbcType=VARCHAR},
+        avatar = #{record.avatar,jdbcType=VARCHAR},
+        create_ip = #{record.createIp,jdbcType=VARCHAR},
+        last_login_time = #{record.lastLoginTime,jdbcType=BIGINT},
+        last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
+        creator = #{record.creator,jdbcType=VARCHAR},
+        ctime = #{record.ctime,jdbcType=BIGINT},
+        description = #{record.description,jdbcType=VARCHAR},
+        status = #{record.status,jdbcType=VARCHAR},
+        year = #{record.year,jdbcType=INTEGER},
+        school_code = #{record.schoolCode,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUser">
+        update ucenter_user
+        <set>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="fullname != null">
+                fullname = #{fullname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                salt = #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="studentCode != null">
+                student_code = #{studentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="examineeNumber != null">
+                examinee_number = #{examineeNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                idcard = #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="createIp != null">
+                create_ip = #{createIp,jdbcType=VARCHAR},
+            </if>
+            <if test="lastLoginTime != null">
+                last_login_time = #{lastLoginTime,jdbcType=BIGINT},
+            </if>
+            <if test="lastLoginIp != null">
+                last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="ctime != null">
+                ctime = #{ctime,jdbcType=BIGINT},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="year != null">
+                year = #{year,jdbcType=INTEGER},
+            </if>
+            <if test="schoolCode != null">
+                school_code = #{schoolCode,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where user_id = #{userId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUser">
+    update ucenter_user
+    set uid = #{uid,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      fullname = #{fullname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      student_code = #{studentCode,jdbcType=VARCHAR},
+      examinee_number = #{examineeNumber,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      create_ip = #{createIp,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=BIGINT},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=BIGINT},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      year = #{year,jdbcType=INTEGER},
+      school_code = #{schoolCode,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <select id="selectByIdentityRelationCodeForOffsetPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT DISTINCT
+        uu.*,
+        CASE uui.usertype_id
+        WHEN 1 THEN '学生'
+        WHEN 2 THEN '家长'
+        WHEN 3 THEN '老师'
+        WHEN 4 THEN '教育机构'
+        ELSE '其他' END as usertype
+        FROM ucenter_user uu
+        LEFT JOIN ucenter_user_identity uui
+        ON uu.user_id = uui.user_id
+        <where>
+
+            <if test="search != null">
+                AND (uu.username LIKE ${search} or uu.fullname LIKE ${search})
+            </if>
+
+            <if test="codes != null">
+                AND uui.relation_code in
+                <foreach close=")" collection="codes" item="code" open="(" separator=",">
+                    #{code}
+                </foreach>
+            </if>
+            <if test="usertype != null">
+                and uui.usertype_id=#{usertype}
+            </if>
+
+
+            <if test="orderByClause != null">
+                order by ${orderByClause}
+            </if>
+        </where>
+
+
+    </select>
+
+    <select id="countByIdentityRelationCodeForOffsetPage" parameterType="java.util.Map" resultType="java.lang.Long">
+        SELECT count(*) FROM ucenter_user uu
+        LEFT JOIN ucenter_user_identity uui
+        ON uu.user_id = uui.user_id
+        <where>
+            <if test="search != null">
+                AND (uu.username LIKE ${search} or uu.fullname LIKE ${search})
+            </if>
+
+            <if test="codes != null">
+                AND uui.relation_code in
+                <foreach close=")" collection="codes" item="code" open="(" separator=",">
+                    #{code}
+                </foreach>
+            </if>
+
+            <if test="usertype != null">
+                and uui.usertype_id=#{usertype}
+            </if>
+
+            <if test="orderByClause != null">
+                order by ${orderByClause}
+            </if>
+        </where>
+
+    </select>
+
+    <insert id="insertBatch" keyProperty="userId" parameterType="java.util.List" useGeneratedKeys="true">
+        insert into ucenter_user (user_id, uid, username,
+        fullname, password, salt,
+        email, student_code, examinee_number,
+        phone, idcard, nickname,
+        sex, avatar, create_ip,
+        last_login_time, last_login_ip, creator,
+        ctime, description, status
+        )
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.userId,jdbcType=INTEGER}, #{item.uid,jdbcType=VARCHAR}, #{item.username,jdbcType=VARCHAR},
+            #{item.fullname,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}, #{item.salt,jdbcType=VARCHAR},
+            #{item.email,jdbcType=VARCHAR}, #{item.studentCode,jdbcType=VARCHAR},
+            #{item.examineeNumber,jdbcType=VARCHAR},
+            #{item.phone,jdbcType=VARCHAR}, #{item.idcard,jdbcType=VARCHAR}, #{item.nickname,jdbcType=VARCHAR},
+            #{item.sex,jdbcType=VARCHAR}, #{item.avatar,jdbcType=VARCHAR}, #{item.createIp,jdbcType=VARCHAR},
+            #{item.lastLoginTime,jdbcType=BIGINT}, #{item.lastLoginIp,jdbcType=VARCHAR},
+            #{item.creator,jdbcType=VARCHAR},
+            #{item.ctime,jdbcType=BIGINT}, #{item.description,jdbcType=VARCHAR}, #{item.status,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+
+    <resultMap id="UserInfoDtoResultMap" type="com.thinkjoy.ucenter.dao.model.ucenterDto.UserInfoDto">
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="fullname" jdbcType="VARCHAR" property="fullname"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="student_code" jdbcType="VARCHAR" property="studentCode"/>
+        <result column="examinee_number" jdbcType="VARCHAR" property="examineeNumber"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="idcard" jdbcType="VARCHAR" property="idcard"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="year" jdbcType="INTEGER" property="year"/>
+        <result column="school_code" jdbcType="VARCHAR" property="schoolCode"/>
+        <result column="school_name" jdbcType="VARCHAR" property="schoolName"/>
+    </resultMap>
+
+    <resultMap id="UserAccountDtoResultMap" type="com.thinkjoy.ucenter.dao.model.ucenterDto.UserAccountDto">
+        <result column="fullname" jdbcType="VARCHAR" property="fullname"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+    </resultMap>
+
+    <select id="getUserInfo" parameterType="java.util.Map" resultMap="UserInfoDtoResultMap">
+       SELECT
+        uu.user_id as userId,
+        uu.username as username,
+        uu.fullname as fullname,
+        uu.email as email,
+        uu.school_code as schoolCode,
+        us.school_name as schoolName,
+        uu.student_code studentCode,
+        uu.examinee_number examineeNumber,
+        uu.phone as phone,
+        uu.idcard as idcard,
+        uu.sex as sex,
+        uu.avatar as avatar,
+        uu.status as status,
+        uu.year as year
+        FROM ucenter_user uu
+        LEFT JOIN ucenter_school us ON uu.school_code = us.school_code
+        WHERE uu.username = #{username}
+    </select>
+
+    <select id="getUserAccount" parameterType="java.util.Map" resultMap="UserAccountDtoResultMap">
+        SELECT
+        uu.fullname as fullname,
+        uu.username as username,
+        uu.password as password
+        FROM ucenter_user uu
+        WHERE uu.username = #{username}
+    </select>
+    <select id="selectuserbeanMap" parameterType="java.util.Map" resultType="com.thinkjoy.ucenter.dao.model.UcenterUser" resultMap="BaseResultMap">
+        select *
+        from ucenter_user
+        <where>
+            <if test="username != null">
+                and username = #{username,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

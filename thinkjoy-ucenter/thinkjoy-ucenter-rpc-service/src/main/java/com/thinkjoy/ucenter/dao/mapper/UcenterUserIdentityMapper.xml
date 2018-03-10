@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ucenter.dao.mapper.UcenterUserIdentityMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.ucenter.dao.model.UcenterUserIdentity">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="usertype_id" jdbcType="INTEGER" property="usertypeId" />
+    <id column="relation_code" jdbcType="VARCHAR" property="relationCode" />
+    <result column="personalization" jdbcType="VARCHAR" property="personalization" />
+    <result column="per_personalization" jdbcType="VARCHAR" property="perPersonalization" />
+    <result column="usertype" jdbcType="VARCHAR" property="usertype" />
+    <result column="relation_name" jdbcType="VARCHAR" property="relationName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    user_id, usertype_id, relation_code, personalization, per_personalization, usertype, 
+    relation_name
+  </sql>
+  <select id="selectByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserIdentityExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ucenter_user_identity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ucenter_user_identity
+    where user_id = #{userId,jdbcType=INTEGER}
+      and usertype_id = #{usertypeId,jdbcType=INTEGER}
+      and relation_code = #{relationCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from ucenter_user_identity
+    where user_id = #{userId,jdbcType=INTEGER}
+      and usertype_id = #{usertypeId,jdbcType=INTEGER}
+      and relation_code = #{relationCode,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserIdentityExample">
+    delete from ucenter_user_identity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserIdentity">
+    insert into ucenter_user_identity (user_id, usertype_id, relation_code, 
+      personalization, per_personalization, usertype, 
+      relation_name)
+    values (#{userId,jdbcType=INTEGER}, #{usertypeId,jdbcType=INTEGER}, #{relationCode,jdbcType=VARCHAR}, 
+      #{personalization,jdbcType=VARCHAR}, #{perPersonalization,jdbcType=VARCHAR}, #{usertype,jdbcType=VARCHAR}, 
+      #{relationName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserIdentity">
+    insert into ucenter_user_identity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="usertypeId != null">
+        usertype_id,
+      </if>
+      <if test="relationCode != null">
+        relation_code,
+      </if>
+      <if test="personalization != null">
+        personalization,
+      </if>
+      <if test="perPersonalization != null">
+        per_personalization,
+      </if>
+      <if test="usertype != null">
+        usertype,
+      </if>
+      <if test="relationName != null">
+        relation_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="usertypeId != null">
+        #{usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="relationCode != null">
+        #{relationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="personalization != null">
+        #{personalization,jdbcType=VARCHAR},
+      </if>
+      <if test="perPersonalization != null">
+        #{perPersonalization,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="relationName != null">
+        #{relationName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserIdentityExample" resultType="java.lang.Long">
+    select count(*) from ucenter_user_identity
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ucenter_user_identity
+    <set>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.usertypeId != null">
+        usertype_id = #{record.usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.relationCode != null">
+        relation_code = #{record.relationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personalization != null">
+        personalization = #{record.personalization,jdbcType=VARCHAR},
+      </if>
+      <if test="record.perPersonalization != null">
+        per_personalization = #{record.perPersonalization,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usertype != null">
+        usertype = #{record.usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.relationName != null">
+        relation_name = #{record.relationName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ucenter_user_identity
+    set user_id = #{record.userId,jdbcType=INTEGER},
+      usertype_id = #{record.usertypeId,jdbcType=INTEGER},
+      relation_code = #{record.relationCode,jdbcType=VARCHAR},
+      personalization = #{record.personalization,jdbcType=VARCHAR},
+      per_personalization = #{record.perPersonalization,jdbcType=VARCHAR},
+      usertype = #{record.usertype,jdbcType=VARCHAR},
+      relation_name = #{record.relationName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserIdentity">
+    update ucenter_user_identity
+    <set>
+      <if test="personalization != null">
+        personalization = #{personalization,jdbcType=VARCHAR},
+      </if>
+      <if test="perPersonalization != null">
+        per_personalization = #{perPersonalization,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null">
+        usertype = #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="relationName != null">
+        relation_name = #{relationName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+      and usertype_id = #{usertypeId,jdbcType=INTEGER}
+      and relation_code = #{relationCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUserIdentity">
+    update ucenter_user_identity
+    set personalization = #{personalization,jdbcType=VARCHAR},
+      per_personalization = #{perPersonalization,jdbcType=VARCHAR},
+      usertype = #{usertype,jdbcType=VARCHAR},
+      relation_name = #{relationName,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+      and usertype_id = #{usertypeId,jdbcType=INTEGER}
+      and relation_code = #{relationCode,jdbcType=VARCHAR}
+  </update>
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+
+  <select id="getUserIdentitesByUserLoginName" parameterType="java.lang.String" resultType="com.thinkjoy.ucenter.dao.model.ucenterDto.UcenterUserIdentityDto">
+    SELECT uui.user_id as userId,
+    uui.usertype_id as usertypeId,
+    uui.relation_code as relationCode,
+    uui.personalization as personalization,
+    uui.per_personalization as perpersonalization,
+    uu.username as username,
+    uu.fullname as fullname,
+    uu.phone as phone,
+    uu.avatar as avatar,
+    uut.usertype_name as usertypeName,
+    us.school_name as schoolName,
+    ua.agency_name as agencyName
+    FROM ucenter_user_identity uui
+    LEFT JOIN ucenter_user uu ON uui.user_id = uu.user_id
+    LEFT JOIN ucenter_school us ON uui.relation_code = us.school_code
+    LEFT JOIN ucenter_agency ua on uui.relation_code = ua.agency_code
+    LEFT JOIN ucenter_usertype uut on uui.usertype_id = uut.usertype_id
+    WHERE uu.username = #{userLoginName}
+  </select>
+
+  <select id="getUserIdentityRelationByUserId" parameterType="java.lang.Integer" resultType="com.thinkjoy.ucenter.dao.model.UcenterUserIdentity">
+    SELECT DISTINCT(uui.relation_code) as relationCode,
+    uui.relation_name as relationName
+    FROM ucenter_user_identity uui WHERE uui.user_id = #{userId}
+  </select>
+
+  <insert id="insertBatch"  parameterType="java.util.List">
+    insert into ucenter_user_identity (user_id, usertype_id, relation_code,
+    personalization, per_personalization)
+    values
+    <foreach item="item" collection="list" separator=",">
+      (#{item.userId,jdbcType=INTEGER}, #{item.usertypeId,jdbcType=INTEGER}, #{item.relationCode,jdbcType=VARCHAR},
+      #{item.personalization,jdbcType=VARCHAR}, #{item.perPersonalization,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+</mapper>

@@ -1,0 +1,45 @@
+
+@font-face {
+    font-family: fzlthk;
+    src: url(../../public/font/fzltxhk.ttf)
+}
+.auth-list a{display: block; height: 100%;}
+.auth-list {width:1100px;margin:0 auto;}
+.auth-list .title {font-size:24px;color:#262626;text-align: center; margin: 120px 0 50px 0;font-family: fzlthk}
+.auth-list .item {width:350px;height:130px;float:left;margin-right:25px;  margin-bottom: 15px;position: relative;transition: all .3s;}
+.auth-list .item:nth-child(3n) {margin-right: 0;}
+
+.auth-list .item.teacher {  background: url(/resources/home/images/bg_line_js.png) repeat-x 0 0}
+.auth-list .item.student { background: url(/resources/home/images/line_xs.png) repeat-x 0 0}
+.auth-list .item.organization { background: url(/resources/home/images/bg_line_jg.png) repeat-x 0 0}
+.auth-list .item.parents { background: url(/resources/home/images/bg_line_js.png) repeat-x 0 0}
+
+.auth-list .item.teacher:hover { -webkit-box-shadow: 0 0 5px #fac267;  -moz-box-shadow: 0 0 5px #fac267;  box-shadow: 0 0 5px #fac267;}
+.auth-list .item.student:hover { -webkit-box-shadow: 0 0 5px #3ccb9b;
+    -moz-box-shadow: 0 0 5px #3ccb9b;
+    box-shadow: 0 0 5px #3ccb9b;}
+.auth-list .item.organization:hover { -webkit-box-shadow: 0 0 5px #66c0f3;
+    -moz-box-shadow: 0 0 5px #66c0f3;
+    box-shadow: 0 0 5px #66c0f3;}
+.auth-list .item.parents:hover {  -webkit-box-shadow: 0 0 5px  #fac267;
+    -moz-box-shadow: 0 0 5px  #fac267;
+    box-shadow: 0 0 5px  #fac267;}
+
+
+.auth-list .item .auth-icon,.auth-list .item p{position: absolute;}
+.auth-list .item .auth-icon{width:95px;height:95px;left:30px; top:20px;}
+.auth-list .item.teacher .auth-icon{background:url(/resources/home/images/teacher-auth.png) no-repeat 0 0;}
+.auth-list .item.teacher p{color:#906622;}
+
+.auth-list .item.student .auth-icon{background:url(/resources/home/images/student-auth.png) no-repeat 0 0;}
+.auth-list .item.student p{color:#0c8353; font-family: fzlthk}
+
+.auth-list .item.organization .auth-icon{background:url(/resources/home/images/organization-auth.png) no-repeat 0 0;}
+.auth-list .item.organization p{color:#1274ae;}
+
+/* 缺少图标 */
+.auth-list .item.parents .auth-icon{background:url(/resources/home/images/teacher-auth.png) no-repeat 0 0;}
+.auth-list .item.parents p{color:#906622;}
+
+.auth-list .item p:nth-child(2){font-size: 24px; left:140px; top:35px;}
+.auth-list .item p:nth-child(3){font-size: 16px; left:140px; top:75px;}

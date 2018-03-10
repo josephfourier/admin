@@ -1,0 +1,63 @@
+@charset "UTF-8";
+.spacer{display:inline-block;}
+.layui-layout-body{padding:30px 70px 0 70px;background: url(../imgs/bg_zs.png) 0 0 repeat-x;}
+.layui-layout.layui-layout-admin{}
+.layui-layout-admin .layui-body{left:230px;top:90px;background-color:#fff;margin-right: 70px;min-width:240px;overflow:hidden;}
+.layui-layout-admin .layui-side{top:90px;}
+.lap-bg-default{background-color:#232d4b;}
+
+.layui-layout-admin .layui-logo>a{background:url(../imgs/common-icon.png) 30px 20px no-repeat;display:block;text-indent:-999px;}
+.lap-agency{position:absolute;left:160px;height:60px;padding:0 10px;}
+.lap-agency>span{display: inline-block;line-height: 60px;font-size: 16px;color: #fff;}
+.lap-nav-user>i{display:inline-block;width:18px;height:18px;background:url(../imgs/common-icon.png) 0 -48px no-repeat;vertical-align:middle;padding-right:5px;}
+.lap-nav-user>.user{color:#fff;}
+i.icon{width:17px;height:17px;display:inline-block;position:relative;}
+.layui-nav-item i.icon{background:url(../imgs/side-icon.png) 0 0 no-repeat;top:3px;}
+.lap-agency .title{  position: relative;}
+.lap-agency .title .spacer{    width: 1px;height: 20px;background: #7ac1f5;position: relative;top: 5px;margin: 0 8px 0 5px;left: 0;}
+
+.layui-nav-item .base i.icon{background:url(../imgs/side-icon.png) 0 0 no-repeat;top:3px;}
+.layui-nav-item .register i.icon{background-position-x: -27px;}
+.layui-nav-item .admission i.icon{background-position-x: -54px;}
+.layui-nav-item .fee-items i.icon{background-position-x: -156px;}
+.layui-nav-item .fee-type i.icon{background-position-x: -181px;}
+.layui-nav-item .refund i.icon{background-position-x: -81px;}
+.layui-nav-item .modify i.icon{background-position-x: -108px;}
+.layui-nav-item .statistics i.icon{background-position-x: -135px;}
+.layui-nav-item .adjust i.icon{background-position-x: -205px;}
+
+.layui-nav-item.layui-nav-itemed i.icon{background-position-y:-25px;}
+.layui-nav-item.layui-this i.icon{background-position-y:-25px;}
+
+.layui-header .spacer{width: 1px;height: 20px;background: #7ac1f5;position: relative;top: 5px;margin: 0 5px;}
+.layui-nav.lap-switch{display: inline-block;padding: 0;}
+.layui-nav.lap-switch>li{vertical-align: initial;}
+.layui-nav.lap-switch>li>a{padding:0 20px 0 0;color:#fff;font-size:16px;}
+
+/* tab frame */
+.tab-frame{border:0;width:100%;overflow:auto;}
+.lap-tab .layui-tab{margin:0;}
+.lap-tab .layui-tab-content{padding:0;}
+.lap-tab .layui-tab-card{border:0;border-radius:0;box-shadow:none;}
+
+/* table */
+.layui-table.lap-table{}
+.layui-table.lap-table+.layui-table-view td,
+.layui-table.lap-table+.layui-table-view th{font-size:12px;}
+.layui-table.lap-table+.layui-table-view tr.lap-table-selected,
+.layui-table.lap-table+.layui-table-view tr.lap-table-selected.layui-table-hover{background-color:#ebf7ff !important;}
+.layui-table.lap-table+.layui-table-view tbody>tr:nth-child(even){background-color:#f8fbfc;}
+.layui-table.lap-table+.layui-table-view tr:hover,
+.layui-table.lap-table+.layui-table-view .layui-table-hover{background-color:#f8fbfc !important;}
+.layui-table.lap-table+.layui-table-view thead tr{background-color:red;}
+.layui-table.lap-table+.layui-table-view .layui-table-header{background-color:red;}
+.layui-table.lap-table{width:980px;}
+
+.spacer {height: 20px;background-color: #eeeeee;position: absolute;top: 20px;width: 1px;right: -10px;}
+
+
+@media screen and (max-width: 800px) {
+    #user-info {
+        display: none;
+    }
+}

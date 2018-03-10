@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- cnname:表中文名称       name：表名称    colnum:excel中处理列数  maxrows：最大上传行数（不配就没有限制）-->
+
+<!--position：字段对应excel位置（列号）（必选）
+chname：字段中文名称（必选）
+name：字段名称（必选）
+datatype：字段类型（必选）
+dataclass：字段分类（必选）1-普通类型（commonType），2-字典类型（dictType），3-其他类型（otherType）   //有其他情况补充
+dictcode：对应字典编码（选填）
+validation:验证列表（选填）//1-不为空验证（notEmpty），2-(字符)长度校验（equalLength（等于），maxLength(最大)，minLength(最小)），3-格式校验（regEx（正则）） //有其他情况补充
+      valtype：验证类型
+      value：验证值
+      示例：
+        <column position="1" chname="示例" name="test" datatype="String" dataclass="dictType" dictcode="DICT_NATION">
+              <validation>//验证列表
+                     <entry valtype="notEmpty" value=""/>
+                     <entry valtype="equalLength" value="64"/>
+                     <entry valtype="maxLength" value="64"/>
+                     <entry valtype="minLength" value="64"/>
+                     <entry valtype="regEx" value="^\d{4}-\d{2}-\d{2}$"/>
+              </validation>
+              <errormessage>//错误提示列表    如果不配置错误提示信息，显示默认
+                     <entry valtype="notEmpty" value="示例不能为空"/>
+                     <entry valtype="equalLength" value=""/>
+                     <entry valtype="maxLength" value=""/>
+                     <entry valtype="minLength" value=""/>
+                     <entry valtype="regEx" value="日期格式错误：yyyy-MM-dd"/>
+              </errormessage>
+       </column>
+-->
+<table cnname="学生基本信息表" name="ucenter_student" colnum="33" maxrows="1000">
+       <column position="1" chname="学生名称" name="studentName" datatype="String" dataclass="commonType">
+           <validation>
+               <entry valtype="notEmpty" value=""/>
+               <entry valtype="maxLength" value="64"/>
+           </validation>
+           <errormessage>
+               <entry valtype="notEmpty" value="学生名称不能为空"/>
+           </errormessage>
+       </column>
+       <column position="2" chname="性别" name="sex" datatype="String" dataclass="otherType">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+              </validation>
+       </column>
+       <column position="3" chname="出生日期" name="birthday" datatype="Date"  dataclass="commonType">
+              <validation>
+                     <entry valtype="regEx" value="^\d{4}-\d{2}-\d{2}$"/>
+              </validation>
+           <errormessage>
+                     <entry valtype="regEx" value="日期格式错误：yyyy-MM-dd"/>
+           </errormessage>
+       </column>
+       <column position="4" chname="民族" name="nation" datatype="String" dataclass="dictType" dictcode="DICT_NATION">
+              <validation>
+                     <entry valtype="notEmpty" value=""/>
+              </validation>
+       </column>
+</table>

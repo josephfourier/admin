@@ -1,0 +1,14 @@
+body .common .layui-layer-title{background:#FFFFFF; color:#0593FD; border: none;font-size: 14px;height: 50px;line-height: 50px;border-bottom:1px solid #e2e2e2;}
+body .common .layui-layer-btn{border-top:1px solid #E9E7E7}
+body .common .layui-layer-btn a{background:#333;}
+body .common .layui-layer-btn .layui-layer-btn1{background:#999;}
+
+
+body .common.confirm .layui-layer-title{border:0;border-radius: 4px 4px 0 0;border-bottom: 1px solid #dedede;font-size:16px;}
+body .common.confirm .layui-layer-content{}
+body .common.confirm .layui-layer-content .msg{position: absolute;font-size:14px;color:#666;top:65px;left:138px;background:url(/resources/lap/imgs/skin-inco.png) 0 0 no-repeat;padding: 8px 50px;}
+body .common.confirm .layui-layer-btn{border-top:none;text-align: center; position: relative;  top: -15px;}
+
+body .common.confirm .layui-layer-btn a{width: 128px;height: 38px;border:1px solid #0593fd;background:#0593fd;color:#fff;font-size:16px;line-height:38px;}
+body .common.confirm .layui-layer-btn .layui-layer-btn0{background:#0593fd;color:#fff;}
+body .common.confirm .layui-layer-btn .layui-layer-btn1{background:none;color:#0593fd;}

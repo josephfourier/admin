@@ -1,0 +1,235 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.thinkjoy</groupId>
+    <artifactId>thinkjoy</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>thinkjoy</name>
+    <!--<url>http://www.zhangshuzheng.cn</url>-->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+
+        <!--common版本控制-->
+        <project.jar.common.version>1.0.0-SNAPSHOT</project.jar.common.version>
+        <!--ams版本控制-->
+        <project.jar.ams.version>1.0.0-SNAPSHOT</project.jar.ams.version>
+        <!--ucenter版本控制-->
+        <project.jar.ucenter.version>1.0.0-SNAPSHOT</project.jar.ucenter.version>
+        <!--upms版本控制-->
+        <project.jar.upms.version>1.0.0-SNAPSHOT</project.jar.upms.version>
+        <!--web版本控制-->
+        <project.jar.web.version>1.0.0-SNAPSHOT</project.jar.web.version>
+        <!--oa版本控制-->
+        <project.jar.oa.version>1.0.0-SNAPSHOT</project.jar.oa.version>
+        <!--enrollment版本控制-->
+        <project.jar.enrollment.version>1.0.0-SNAPSHOT</project.jar.enrollment.version>
+
+    </properties>
+
+    <modules>
+        <module>thinkjoy-common</module>
+        <module>thinkjoy-fileserver</module>
+        <module>thinkjoy-upms</module>
+        <module>thinkjoy-ucenter</module>
+        <module>thinkjoy-ams</module>
+        <module>thinkjoy-web</module>
+        <module>thinkjoy-enrollment</module>
+    </modules>
+
+    <distributionManagement>
+        <!-- 两个ID必须与 setting.xml中的<server><id>nexus-releases</id></server>保持一致-->
+        <repository>
+            <id>test-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://repo.xiyue.cn/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>test-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://repo.xiyue.cn/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+
+    </distributionManagement>
+
+    <build>
+        <!--<pluginManagement>-->
+            <!--<plugins>-->
+                <!--<plugin>-->
+                    <!--<artifactId>maven-deploy-plugin</artifactId>-->
+                    <!--<version>2.8.2</version>-->
+                    <!--<executions>-->
+                        <!--<execution>-->
+                            <!--<id>default-deploy</id>-->
+                            <!--<phase>deploy</phase>-->
+                            <!--<goals>-->
+                                <!--<goal>deploy</goal>-->
+                            <!--</goals>-->
+                            <!--&lt;!&ndash; skip默认deploy插件的执行 &ndash;&gt;-->
+                            <!--<configuration>-->
+                                <!--<skip>true</skip>-->
+                            <!--</configuration>-->
+                        <!--</execution>-->
+                        <!--<execution>-->
+                            <!--<id>deploy-file</id>-->
+                            <!--<phase>deploy</phase>-->
+                            <!--<goals>-->
+                                <!--<goal>deploy-file</goal>-->
+                            <!--</goals>-->
+                            <!--<configuration>-->
+                                <!--<packaging>jar</packaging>-->
+                                <!--<repositoryId>${project.distributionManagement.snapshotRepository.id}</repositoryId>-->
+                                <!--<url>${project.distributionManagement.snapshotRepository.url}</url>-->
+                                <!--<file>${project.build.directory}/${project.artifactId}.jar</file>-->
+                                <!--<groupId>${project.groupId}</groupId>-->
+                                <!--<artifactId>${project.artifactId}</artifactId>-->
+                                <!--<version>${project.version}</version>-->
+                            <!--</configuration>-->
+                        <!--</execution>-->
+                    <!--</executions>-->
+                <!--</plugin>-->
+            <!--</plugins>-->
+        <!--</pluginManagement>-->
+    </build>
+
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- common 依赖 -->
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-common</artifactId>
+                <version>${project.jar.common.version}</version>
+            </dependency>
+
+            <!-- ams 依赖-->
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-ams-rpc-api</artifactId>
+                <version>${project.jar.ams.version}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-ams-dao</artifactId>
+                <version>${project.jar.ams.version}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-ams-common</artifactId>
+                <version>${project.jar.ams.version}</version>
+                <type>jar</type>
+            </dependency>
+
+            <!-- ucenter 依赖 -->
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-ucenter-rpc-api</artifactId>
+                <version>${project.jar.ucenter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-ucenter-dao</artifactId>
+                <version>${project.jar.ucenter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-ucenter-common</artifactId>
+                <version>${project.jar.ucenter.version}</version>
+            </dependency>
+
+
+            <!-- upms 依赖 -->
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-upms-rpc-api</artifactId>
+                <version>${project.jar.upms.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-upms-dao</artifactId>
+                <version>${project.jar.upms.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-upms-common</artifactId>
+                <version>${project.jar.upms.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-upms-client</artifactId>
+                <version>${project.jar.upms.version}</version>
+            </dependency>
+
+
+            <!-- web 依赖 -->
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-web-rpc-api</artifactId>
+                <version>${project.jar.web.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-web-dao</artifactId>
+                <version>${project.jar.web.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-web-common</artifactId>
+                <version>${project.jar.web.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-oauth-client</artifactId>
+                <version>${project.jar.web.version}</version>
+            </dependency>
+
+
+            <!-- OA 依赖 -->
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-oa-rpc-api</artifactId>
+                <version>${project.jar.oa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-oa-dao</artifactId>
+                <version>${project.jar.oa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-oa-common</artifactId>
+                <version>${project.jar.oa.version}</version>
+            </dependency>
+
+            <!-- enrollment 依赖 -->
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-enrollment-rpc-api</artifactId>
+                <version>${project.jar.enrollment.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-enrollment-dao</artifactId>
+                <version>${project.jar.enrollment.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thinkjoy</groupId>
+                <artifactId>thinkjoy-enrollment-common</artifactId>
+                <version>${project.jar.enrollment.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

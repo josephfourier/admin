@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+
+    <dubbo:application name="thinkjoy-ams-rpc-service"/>
+
+    <dubbo:registry address="${dubbo.registry.address}"/>
+
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
+
+    <!-- 应用 -->
+    <bean id="amsAppServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsAppServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsAppService" ref="amsAppServiceImpl" timeout="10000"/>
+    <!-- 应用资源 -->
+    <bean id="amsResourcesServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsResourcesServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsResourcesService" ref="amsResourcesServiceImpl" timeout="10000"/>
+
+    <!-- 应用权限管理 -->
+    <bean id="amsApppermissionServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsApppermissionServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsApppermissionService" ref="amsApppermissionServiceImpl" timeout="10000"/>
+
+    <!-- 用户角色管理 -->
+    <bean id="amsApproleServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsApproleServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsApproleService" ref="amsApproleServiceImpl" timeout="10000"/>
+
+    <!-- 应用角色管理 -->
+    <bean id="amsUserApproleServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsUserApproleServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsUserApproleService" ref="amsUserApproleServiceImpl" timeout="10000"/>
+
+    <!-- 应用角色权限管理 -->
+    <bean id="amsApprolePermissionServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsApprolePermissionServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsApprolePermissionService" ref="amsApprolePermissionServiceImpl" timeout="10000"/>
+
+
+    <!-- 应用角色 -->
+    <bean id="amsRoleServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsRoleServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsRoleService" ref="amsRoleServiceImpl" timeout="10000"/>
+
+    <!-- 应用角色资源 -->
+    <bean id="amsRoleResourceServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsRoleResourceServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsRoleResourceService" ref="amsRoleResourceServiceImpl" timeout="10000"/>
+
+
+    <!-- 项目-->
+    <bean id="amsProjectServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsProjectServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsProjectService" ref="amsProjectServiceImpl" timeout="10000"/>
+
+    <!-- 项目-->
+    <bean id="amsPerprojectAppServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsPerprojectAppServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsPerprojectAppService" ref="amsPerprojectAppServiceImpl" timeout="10000"/>
+
+
+    <!--项目组织机构-->
+    <bean id="amsProjectSchoolagencyServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsProjectSchoolagencyServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsProjectSchoolagencyService" ref="amsProjectSchoolagencyServiceImpl" timeout="10000"/>
+
+    <!--项目应用-->
+    <bean id="amsProjectAppServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.AmsProjectAppServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.AmsProjectAppService" ref="amsProjectAppServiceImpl" timeout="10000"/>
+
+    <!--oautchclient-->
+    <bean id="oauthClientDetailsServiceImpl" class="com.thinkjoy.ams.rpc.service.impl.OauthClientDetailsServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ams.rpc.api.OauthClientDetailsService" ref="oauthClientDetailsServiceImpl" timeout="10000"/>
+
+</beans>

@@ -1,0 +1,99 @@
+body {
+    min-width: 1200px;
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 1200px;
+    position: relative;
+}
+
+.spacer {
+    width: 1px;
+    height: 30px;
+    background-color: #ccc;
+    display: inline-block;
+}
+
+.inline {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.placeholder {
+}
+
+#header .wrap {
+    padding-top: 25px;
+}
+
+#header {
+    height: 80px;
+    background-color: #ffffff;
+}
+
+#header .logo {
+    display: inline-block;
+    position: relative;
+    width: 250px;
+}
+
+#header .logo h1 {
+    height: 50px;
+    width: 92px;
+    background: url(../../images/logo3.png) no-repeat 0 -10px;
+    text-indent: -9999px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#header .logo b.spacer {
+    width: 1px;
+    position: absolute;
+    height: 20px;
+    left: 110px;
+    top: 6px;
+}
+
+#header .logo h2 {
+    display: inline-block;
+    position: absolute;
+    top: 3px;
+    font-weight: normal;
+    color: #333333;
+    font-size: 18px;
+    left: 130px;
+}
+
+/* layout end*/
+
+#header .h-nav {
+    position: absolute;
+    right: 0;
+    top: 34px;
+}
+
+#header .h-nav li {
+    float: left;
+    font-size: 12px;
+    line-height: 19px;
+    font-family: "微软雅黑";
+}
+
+#header .h-nav li a {
+    color: #333333;
+}
+
+#header .h-nav li a:hover {
+    color: #0593fd;
+    text-decoration: underline;
+}
+
+#header .h-nav li.spacer {
+    margin: 0 15px;
+    height: 15px;
+    background-color: #b3b3b3;
+    position: relative;
+    top: 2px;
+}

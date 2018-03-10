@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ucenter.dao.mapper.UcenterFacultyMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.ucenter.dao.model.UcenterFaculty">
+    <id column="faculty_id" jdbcType="INTEGER" property="facultyId" />
+    <result column="faculty_code" jdbcType="VARCHAR" property="facultyCode" />
+    <result column="faculty_name" jdbcType="VARCHAR" property="facultyName" />
+    <result column="fzr_name" jdbcType="VARCHAR" property="fzrName" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="ctime" jdbcType="BIGINT" property="ctime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="school_code" jdbcType="VARCHAR" property="schoolCode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    faculty_id, faculty_code, faculty_name, fzr_name, tel, birthday, creator, ctime, 
+    description, status, year, school_code
+  </sql>
+  <select id="selectByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterFacultyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ucenter_faculty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ucenter_faculty
+    where faculty_id = #{facultyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ucenter_faculty
+    where faculty_id = #{facultyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterFacultyExample">
+    delete from ucenter_faculty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.ucenter.dao.model.UcenterFaculty" useGeneratedKeys="true" keyProperty="facultyId">
+    insert into ucenter_faculty (faculty_id, faculty_code, faculty_name, 
+      fzr_name, tel, birthday, 
+      creator, ctime, description, 
+      status, year, school_code
+      )
+    values (#{facultyId,jdbcType=INTEGER}, #{facultyCode,jdbcType=VARCHAR}, #{facultyName,jdbcType=VARCHAR}, 
+      #{fzrName,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{creator,jdbcType=VARCHAR}, #{ctime,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{year,jdbcType=INTEGER}, #{schoolCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterFaculty" useGeneratedKeys="true" keyProperty="facultyId">
+    insert into ucenter_faculty
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="facultyId != null">
+        faculty_id,
+      </if>
+      <if test="facultyCode != null">
+        faculty_code,
+      </if>
+      <if test="facultyName != null">
+        faculty_name,
+      </if>
+      <if test="fzrName != null">
+        fzr_name,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="schoolCode != null">
+        school_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="facultyId != null">
+        #{facultyId,jdbcType=INTEGER},
+      </if>
+      <if test="facultyCode != null">
+        #{facultyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="facultyName != null">
+        #{facultyName,jdbcType=VARCHAR},
+      </if>
+      <if test="fzrName != null">
+        #{fzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="schoolCode != null">
+        #{schoolCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterFacultyExample" resultType="java.lang.Long">
+    select count(*) from ucenter_faculty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ucenter_faculty
+    <set>
+      <if test="record.facultyId != null">
+        faculty_id = #{record.facultyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.facultyCode != null">
+        faculty_code = #{record.facultyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.facultyName != null">
+        faculty_name = #{record.facultyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fzrName != null">
+        fzr_name = #{record.fzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null">
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ctime != null">
+        ctime = #{record.ctime,jdbcType=BIGINT},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.year != null">
+        year = #{record.year,jdbcType=INTEGER},
+      </if>
+      <if test="record.schoolCode != null">
+        school_code = #{record.schoolCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ucenter_faculty
+    set faculty_id = #{record.facultyId,jdbcType=INTEGER},
+      faculty_code = #{record.facultyCode,jdbcType=VARCHAR},
+      faculty_name = #{record.facultyName,jdbcType=VARCHAR},
+      fzr_name = #{record.fzrName,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      ctime = #{record.ctime,jdbcType=BIGINT},
+      description = #{record.description,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      year = #{record.year,jdbcType=INTEGER},
+      school_code = #{record.schoolCode,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterFaculty">
+    update ucenter_faculty
+    <set>
+      <if test="facultyCode != null">
+        faculty_code = #{facultyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="facultyName != null">
+        faculty_name = #{facultyName,jdbcType=VARCHAR},
+      </if>
+      <if test="fzrName != null">
+        fzr_name = #{fzrName,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        ctime = #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="schoolCode != null">
+        school_code = #{schoolCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where faculty_id = #{facultyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thinkjoy.ucenter.dao.model.UcenterFaculty">
+    update ucenter_faculty
+    set faculty_code = #{facultyCode,jdbcType=VARCHAR},
+      faculty_name = #{facultyName,jdbcType=VARCHAR},
+      fzr_name = #{fzrName,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      creator = #{creator,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=BIGINT},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      year = #{year,jdbcType=INTEGER},
+      school_code = #{schoolCode,jdbcType=VARCHAR}
+    where faculty_id = #{facultyId,jdbcType=INTEGER}
+  </update>
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+  <select id="selectMaxCodeByMap" parameterType="java.util.Map" resultType="java.lang.String">
+        select MAX(faculty_Code)
+        from ucenter_faculty
+        <where>
+            <if test="facultyCode != null">
+                and faculty_Code = #{facultyCode,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolCode != null">
+                and school_Code = #{schoolCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="selectfacultybeanMap" parameterType="java.util.Map" resultType="com.thinkjoy.ucenter.dao.model.UcenterFaculty" resultMap="BaseResultMap">
+        select *
+        from ucenter_faculty
+        <where>
+            <if test="facultyCode != null">
+                and faculty_code = #{facultyCode,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolCode != null">
+                and school_code = #{schoolCode,jdbcType=VARCHAR}
+            </if>
+            <if test="year != null">
+                and year = #{year,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+</mapper>

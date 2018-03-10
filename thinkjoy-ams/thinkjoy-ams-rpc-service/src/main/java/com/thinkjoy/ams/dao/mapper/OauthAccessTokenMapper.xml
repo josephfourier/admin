@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ams.dao.mapper.OauthAccessTokenMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.ams.dao.model.OauthAccessToken">
+    <result column="token_id" jdbcType="VARCHAR" property="tokenId" />
+    <result column="client_id" jdbcType="VARCHAR" property="clientId" />
+    <result column="authentication_id" jdbcType="VARCHAR" property="authenticationId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="token_type" jdbcType="VARCHAR" property="tokenType" />
+    <result column="token_expired_seconds" jdbcType="INTEGER" property="tokenExpiredSeconds" />
+    <result column="refresh_token" jdbcType="VARCHAR" property="refreshToken" />
+    <result column="refresh_token_expired_seconds" jdbcType="INTEGER" property="refreshTokenExpiredSeconds" />
+    <result column="ctime" jdbcType="BIGINT" property="ctime" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="usertype_id" jdbcType="INTEGER" property="usertypeId" />
+    <result column="relation_code" jdbcType="VARCHAR" property="relationCode" />
+    <result column="per_personalization" jdbcType="VARCHAR" property="perPersonalization" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    token_id, client_id, authentication_id, username, token_type, token_expired_seconds,
+    refresh_token, refresh_token_expired_seconds, ctime, user_id, usertype_id, relation_code,
+    per_personalization
+  </sql>
+  <select id="selectByExample" parameterType="com.thinkjoy.ams.dao.model.OauthAccessTokenExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from oauth_access_token
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.ams.dao.model.OauthAccessTokenExample">
+    delete from oauth_access_token
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.ams.dao.model.OauthAccessToken">
+    insert into oauth_access_token (token_id, client_id, authentication_id,
+      username, token_type, token_expired_seconds,
+      refresh_token, refresh_token_expired_seconds,
+      ctime, user_id, usertype_id,
+      relation_code, per_personalization)
+    values (#{tokenId,jdbcType=VARCHAR}, #{clientId,jdbcType=VARCHAR}, #{authenticationId,jdbcType=VARCHAR},
+      #{username,jdbcType=VARCHAR}, #{tokenType,jdbcType=VARCHAR}, #{tokenExpiredSeconds,jdbcType=INTEGER},
+      #{refreshToken,jdbcType=VARCHAR}, #{refreshTokenExpiredSeconds,jdbcType=INTEGER},
+      #{ctime,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{usertypeId,jdbcType=INTEGER},
+      #{relationCode,jdbcType=VARCHAR}, #{perPersonalization,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thinkjoy.ams.dao.model.OauthAccessToken">
+    insert into oauth_access_token
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tokenId != null">
+        token_id,
+      </if>
+      <if test="clientId != null">
+        client_id,
+      </if>
+      <if test="authenticationId != null">
+        authentication_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="tokenType != null">
+        token_type,
+      </if>
+      <if test="tokenExpiredSeconds != null">
+        token_expired_seconds,
+      </if>
+      <if test="refreshToken != null">
+        refresh_token,
+      </if>
+      <if test="refreshTokenExpiredSeconds != null">
+        refresh_token_expired_seconds,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="usertypeId != null">
+        usertype_id,
+      </if>
+      <if test="relationCode != null">
+        relation_code,
+      </if>
+      <if test="perPersonalization != null">
+        per_personalization,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tokenId != null">
+        #{tokenId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null">
+        #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="authenticationId != null">
+        #{authenticationId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenType != null">
+        #{tokenType,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenExpiredSeconds != null">
+        #{tokenExpiredSeconds,jdbcType=INTEGER},
+      </if>
+      <if test="refreshToken != null">
+        #{refreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="refreshTokenExpiredSeconds != null">
+        #{refreshTokenExpiredSeconds,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="usertypeId != null">
+        #{usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="relationCode != null">
+        #{relationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="perPersonalization != null">
+        #{perPersonalization,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.ams.dao.model.OauthAccessTokenExample" resultType="java.lang.Long">
+    select count(*) from oauth_access_token
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update oauth_access_token
+    <set>
+      <if test="record.tokenId != null">
+        token_id = #{record.tokenId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientId != null">
+        client_id = #{record.clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authenticationId != null">
+        authentication_id = #{record.authenticationId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tokenType != null">
+        token_type = #{record.tokenType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tokenExpiredSeconds != null">
+        token_expired_seconds = #{record.tokenExpiredSeconds,jdbcType=INTEGER},
+      </if>
+      <if test="record.refreshToken != null">
+        refresh_token = #{record.refreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refreshTokenExpiredSeconds != null">
+        refresh_token_expired_seconds = #{record.refreshTokenExpiredSeconds,jdbcType=INTEGER},
+      </if>
+      <if test="record.ctime != null">
+        ctime = #{record.ctime,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.usertypeId != null">
+        usertype_id = #{record.usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.relationCode != null">
+        relation_code = #{record.relationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.perPersonalization != null">
+        per_personalization = #{record.perPersonalization,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update oauth_access_token
+    set token_id = #{record.tokenId,jdbcType=VARCHAR},
+      client_id = #{record.clientId,jdbcType=VARCHAR},
+      authentication_id = #{record.authenticationId,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      token_type = #{record.tokenType,jdbcType=VARCHAR},
+      token_expired_seconds = #{record.tokenExpiredSeconds,jdbcType=INTEGER},
+      refresh_token = #{record.refreshToken,jdbcType=VARCHAR},
+      refresh_token_expired_seconds = #{record.refreshTokenExpiredSeconds,jdbcType=INTEGER},
+      ctime = #{record.ctime,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      usertype_id = #{record.usertypeId,jdbcType=INTEGER},
+      relation_code = #{record.relationCode,jdbcType=VARCHAR},
+      per_personalization = #{record.perPersonalization,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+</mapper>

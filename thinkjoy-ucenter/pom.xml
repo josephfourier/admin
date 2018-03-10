@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>thinkjoy</artifactId>
+        <groupId>com.thinkjoy</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.thinkjoy</groupId>
+    <artifactId>thinkjoy-ucenter</artifactId>
+    <version>1.0.0</version>
+
+    <packaging>pom</packaging>
+
+    <name>thinkjoy-ucenter</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+    </properties>
+    <modules>
+        <module>thinkjoy-ucenter-common</module>
+        <module>thinkjoy-ucenter-dao</module>
+        <module>thinkjoy-ucenter-rpc-api</module>
+        <module>thinkjoy-ucenter-rpc-service</module>
+        <module>thinkjoy-ucenter-admin</module>
+    </modules>
+
+    
+</project>

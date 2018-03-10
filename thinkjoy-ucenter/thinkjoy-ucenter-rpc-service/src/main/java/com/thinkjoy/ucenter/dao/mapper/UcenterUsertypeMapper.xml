@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ucenter.dao.mapper.UcenterUsertypeMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.ucenter.dao.model.UcenterUsertype">
+    <id column="usertype_id" jdbcType="INTEGER" property="usertypeId" />
+    <result column="usertype_name" jdbcType="VARCHAR" property="usertypeName" />
+    <result column="orders" jdbcType="BIGINT" property="orders" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    usertype_id, usertype_name, orders
+  </sql>
+  <select id="selectByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUsertypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ucenter_usertype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ucenter_usertype
+    where usertype_id = #{usertypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ucenter_usertype
+    where usertype_id = #{usertypeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUsertypeExample">
+    delete from ucenter_usertype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUsertype">
+    insert into ucenter_usertype (usertype_id, usertype_name, orders
+      )
+    values (#{usertypeId,jdbcType=INTEGER}, #{usertypeName,jdbcType=VARCHAR}, #{orders,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUsertype">
+    insert into ucenter_usertype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usertypeId != null">
+        usertype_id,
+      </if>
+      <if test="usertypeName != null">
+        usertype_name,
+      </if>
+      <if test="orders != null">
+        orders,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usertypeId != null">
+        #{usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="usertypeName != null">
+        #{usertypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="orders != null">
+        #{orders,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUsertypeExample" resultType="java.lang.Long">
+    select count(*) from ucenter_usertype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ucenter_usertype
+    <set>
+      <if test="record.usertypeId != null">
+        usertype_id = #{record.usertypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.usertypeName != null">
+        usertype_name = #{record.usertypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orders != null">
+        orders = #{record.orders,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ucenter_usertype
+    set usertype_id = #{record.usertypeId,jdbcType=INTEGER},
+      usertype_name = #{record.usertypeName,jdbcType=VARCHAR},
+      orders = #{record.orders,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUsertype">
+    update ucenter_usertype
+    <set>
+      <if test="usertypeName != null">
+        usertype_name = #{usertypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="orders != null">
+        orders = #{orders,jdbcType=BIGINT},
+      </if>
+    </set>
+    where usertype_id = #{usertypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUsertype">
+    update ucenter_usertype
+    set usertype_name = #{usertypeName,jdbcType=VARCHAR},
+      orders = #{orders,jdbcType=BIGINT}
+    where usertype_id = #{usertypeId,jdbcType=INTEGER}
+  </update>
+
+  <select id="getall" parameterType="com.thinkjoy.ucenter.dao.model.UcenterUsertypeExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ucenter_usertype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+</mapper>

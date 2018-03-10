@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<table cnname="老师基本信息基本信息表" name="ucenter_teacher" colnum="15" maxrows="5000">
+    <column position="1" chname="教师姓名" name="teacherName" datatype="String" dataclass="commonType">
+        <validation>
+            <entry valtype="notEmpty" value=""/>
+            <entry valtype="maxLength" value="64"/>
+        </validation>
+        <errormessage>
+            <entry valtype="notEmpty" value="教师姓名不能为空"/>
+        </errormessage>
+    </column>
+    <column position="2" chname="性别" name="sex" datatype="String" dataclass="otherType">
+        <validation>
+            <entry valtype="notEmpty" value=""/>
+        </validation>
+    </column>
+    <column position="3" chname="民族" name="nation" datatype="String" dataclass="dictType" dictcode="DICT_NATION">
+        <validation>
+            <entry valtype="notEmpty" value=""/>
+        </validation>
+    </column>
+    <column position="4" chname="手机号码" name="phone" datatype="String"  dataclass="commonType">
+        <validation>
+            <entry valtype="notEmpty" value=""/>
+            <entry valtype="regEx" value="^1\d{10}$"/>
+        </validation>
+        <errormessage>
+            <entry valtype="regEx" value="手机号格式错误"/>
+        </errormessage>
+    </column>
+    <column position="5" chname="身份证号" name="idcard" datatype="String"  dataclass="commonType">
+        <validation>
+            <entry valtype="notEmpty" value=""/>
+            <entry valtype="regEx" value="^\d{17}[0-9Xx]|\d{14}[0-9Xx]$"/>
+        </validation>
+    </column>
+    <column position="6" chname="部门名称" name="departmentName" datatype="String"  dataclass="commonType">
+        <validation>
+            <entry valtype="notEmpty" value=""/>
+            <entry valtype="maxLength" value="64"/>
+        </validation>
+    </column>
+    <column position="7" chname="教工号" name="teacherCode" datatype="String"  dataclass="commonType">
+        <validation>
+            <entry valtype="notEmpty" value=""/>
+            <entry valtype="maxLength" value="64"/>
+        </validation>
+    </column>
+    <!--<column position="8" chname="班级名称" name="className" datatype="String"  dataclass="commonType"/>-->
+    <column position="8" chname="邮箱" name="mail" datatype="String"  dataclass="commonType">
+        <validation>
+            <entry valtype="maxLength" value="128"/>
+            <entry valtype="regEx" value="^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$"/>
+        </validation>
+        <errormessage>
+            <entry valtype="regEx" value="邮箱格式错误"/>
+        </errormessage>
+    </column>
+    <column position="9" chname="出生日期" name="birthday" datatype="Date"  dataclass="commonType">
+        <validation>
+            <entry valtype="regEx" value="^\d{4}-\d{2}-\d{2}$"/>
+        </validation>
+        <errormessage>
+            <entry valtype="regEx" value="日期格式错误：yyyy-MM-dd"/>
+        </errormessage>
+    </column>
+    <column position="10" chname="籍贯" name="origin" datatype="String"  dataclass="commonType">
+        <validation>
+            <entry valtype="maxLength" value="64"/>
+        </validation>
+    </column>
+    <column position="11" chname="政治面貌" name="politics" datatype="String"  dataclass="dictType" dictcode="DICT_POLITICS"/>
+    <column position="12" chname="参加工作时间" name="worktime" datatype="Date"  dataclass="commonType">
+        <validation>
+            <entry valtype="regEx" value="^\d{4}-\d{2}-\d{2}$"/>
+        </validation>
+        <errormessage>
+            <entry valtype="regEx" value="日期格式错误：yyyy-MM-dd"/>
+        </errormessage>
+    </column>
+    <column position="13" chname="学历" name="education" datatype="String"  dataclass="dictType" dictcode="DICT_EDUCATION"/>
+    <column position="14" chname="描述" name="description" datatype="String"  dataclass="commonType">
+        <validation>
+            <entry valtype="maxLength" value="256"/>
+        </validation>
+    </column>
+
+</table>

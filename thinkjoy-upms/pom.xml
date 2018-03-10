@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>thinkjoy</artifactId>
+        <groupId>com.thinkjoy</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.thinkjoy</groupId>
+    <artifactId>thinkjoy-upms</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>thinkjoy-upms</name>
+    <url>http://www.zhangshuzheng.cn</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+    </properties>
+
+    <modules>
+        <module>thinkjoy-upms-common</module>
+        <module>thinkjoy-upms-dao</module>
+        <module>thinkjoy-upms-rpc-api</module>
+        <module>thinkjoy-upms-rpc-service</module>
+        <module>thinkjoy-upms-client</module>
+        <module>thinkjoy-upms-server</module>
+    </modules>
+
+
+
+</project>

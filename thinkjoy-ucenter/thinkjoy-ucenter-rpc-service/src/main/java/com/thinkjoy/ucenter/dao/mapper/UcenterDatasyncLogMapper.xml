@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ucenter.dao.mapper.UcenterDatasyncLogMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLog">
+    <id column="datasync_id" jdbcType="INTEGER" property="datasyncId" />
+    <result column="datasync_system" jdbcType="VARCHAR" property="datasyncSystem" />
+    <result column="datasync_time" jdbcType="TIMESTAMP" property="datasyncTime" />
+    <result column="data" jdbcType="VARCHAR" property="data" />
+    <result column="school_code" jdbcType="VARCHAR" property="schoolCode" />
+    <result column="school_name" jdbcType="VARCHAR" property="schoolName" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="table_name" jdbcType="VARCHAR" property="tableName" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLog">
+    <result column="data_log" jdbcType="LONGVARCHAR" property="dataLog" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    datasync_id, datasync_system, datasync_time, data, school_code, school_name, status, 
+    creator, table_name
+  </sql>
+  <sql id="Blob_Column_List">
+    data_log
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLogExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ucenter_datasync_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ucenter_datasync_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ucenter_datasync_log
+    where datasync_id = #{datasyncId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ucenter_datasync_log
+    where datasync_id = #{datasyncId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLogExample">
+    delete from ucenter_datasync_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLog">
+    insert into ucenter_datasync_log (datasync_id, datasync_system, datasync_time, 
+      data, school_code, school_name, 
+      status, creator, table_name, 
+      data_log)
+    values (#{datasyncId,jdbcType=INTEGER}, #{datasyncSystem,jdbcType=VARCHAR}, #{datasyncTime,jdbcType=TIMESTAMP}, 
+      #{data,jdbcType=VARCHAR}, #{schoolCode,jdbcType=VARCHAR}, #{schoolName,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR}, 
+      #{dataLog,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLog">
+    insert into ucenter_datasync_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="datasyncId != null">
+        datasync_id,
+      </if>
+      <if test="datasyncSystem != null">
+        datasync_system,
+      </if>
+      <if test="datasyncTime != null">
+        datasync_time,
+      </if>
+      <if test="data != null">
+        data,
+      </if>
+      <if test="schoolCode != null">
+        school_code,
+      </if>
+      <if test="schoolName != null">
+        school_name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="tableName != null">
+        table_name,
+      </if>
+      <if test="dataLog != null">
+        data_log,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="datasyncId != null">
+        #{datasyncId,jdbcType=INTEGER},
+      </if>
+      <if test="datasyncSystem != null">
+        #{datasyncSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="datasyncTime != null">
+        #{datasyncTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="data != null">
+        #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolCode != null">
+        #{schoolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolName != null">
+        #{schoolName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataLog != null">
+        #{dataLog,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLogExample" resultType="java.lang.Long">
+    select count(*) from ucenter_datasync_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ucenter_datasync_log
+    <set>
+      <if test="record.datasyncId != null">
+        datasync_id = #{record.datasyncId,jdbcType=INTEGER},
+      </if>
+      <if test="record.datasyncSystem != null">
+        datasync_system = #{record.datasyncSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datasyncTime != null">
+        datasync_time = #{record.datasyncTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.data != null">
+        data = #{record.data,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolCode != null">
+        school_code = #{record.schoolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolName != null">
+        school_name = #{record.schoolName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableName != null">
+        table_name = #{record.tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataLog != null">
+        data_log = #{record.dataLog,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update ucenter_datasync_log
+    set datasync_id = #{record.datasyncId,jdbcType=INTEGER},
+      datasync_system = #{record.datasyncSystem,jdbcType=VARCHAR},
+      datasync_time = #{record.datasyncTime,jdbcType=TIMESTAMP},
+      data = #{record.data,jdbcType=VARCHAR},
+      school_code = #{record.schoolCode,jdbcType=VARCHAR},
+      school_name = #{record.schoolName,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      table_name = #{record.tableName,jdbcType=VARCHAR},
+      data_log = #{record.dataLog,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ucenter_datasync_log
+    set datasync_id = #{record.datasyncId,jdbcType=INTEGER},
+      datasync_system = #{record.datasyncSystem,jdbcType=VARCHAR},
+      datasync_time = #{record.datasyncTime,jdbcType=TIMESTAMP},
+      data = #{record.data,jdbcType=VARCHAR},
+      school_code = #{record.schoolCode,jdbcType=VARCHAR},
+      school_name = #{record.schoolName,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      table_name = #{record.tableName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLog">
+    update ucenter_datasync_log
+    <set>
+      <if test="datasyncSystem != null">
+        datasync_system = #{datasyncSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="datasyncTime != null">
+        datasync_time = #{datasyncTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="data != null">
+        data = #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolCode != null">
+        school_code = #{schoolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolName != null">
+        school_name = #{schoolName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null">
+        table_name = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataLog != null">
+        data_log = #{dataLog,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where datasync_id = #{datasyncId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLog">
+    update ucenter_datasync_log
+    set datasync_system = #{datasyncSystem,jdbcType=VARCHAR},
+      datasync_time = #{datasyncTime,jdbcType=TIMESTAMP},
+      data = #{data,jdbcType=VARCHAR},
+      school_code = #{schoolCode,jdbcType=VARCHAR},
+      school_name = #{schoolName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      table_name = #{tableName,jdbcType=VARCHAR},
+      data_log = #{dataLog,jdbcType=LONGVARCHAR}
+    where datasync_id = #{datasyncId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thinkjoy.ucenter.dao.model.UcenterDatasyncLog">
+    update ucenter_datasync_log
+    set datasync_system = #{datasyncSystem,jdbcType=VARCHAR},
+      datasync_time = #{datasyncTime,jdbcType=TIMESTAMP},
+      data = #{data,jdbcType=VARCHAR},
+      school_code = #{schoolCode,jdbcType=VARCHAR},
+      school_name = #{schoolName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      table_name = #{tableName,jdbcType=VARCHAR}
+    where datasync_id = #{datasyncId,jdbcType=INTEGER}
+  </update>
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+</mapper>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!--项目名称-->
+    <dubbo:application name="thinkjoy-ams-admin"/>
+
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <dubbo:registry address="${dubbo.registry.address}"/>
+
+
+    <!--upms权限-->
+    <dubbo:reference id="upmsApiService" interface="com.thinkjoy.upms.rpc.api.UpmsApiService"/>
+
+    <!--ams应用-->
+    <dubbo:reference id="amsAppService" interface="com.thinkjoy.ams.rpc.api.AmsAppService"/>
+
+    <!--ams项目-->
+    <dubbo:reference id="amsProjectService" interface="com.thinkjoy.ams.rpc.api.AmsProjectService"/>
+
+    <!--ams资源-->
+    <dubbo:reference id="amsResourcesService" interface="com.thinkjoy.ams.rpc.api.AmsResourcesService"/>
+
+    <!--ams资源-->
+    <dubbo:reference id="amsRoleService" interface="com.thinkjoy.ams.rpc.api.AmsRoleService"/>
+
+    <!--ams角色资源-->
+    <dubbo:reference id="amsRoleResourceService" interface="com.thinkjoy.ams.rpc.api.AmsRoleResourceService"/>
+
+    <!--ams项目组织机构-->
+    <dubbo:reference id="amsProjectSchoolagencyService" interface="com.thinkjoy.ams.rpc.api.AmsProjectSchoolagencyService"/>
+
+    <!--ucenter组织-->
+    <dubbo:reference id="ucenterAgencyService" interface="com.thinkjoy.ucenter.rpc.api.UcenterAgencyService"/>
+
+    <!--ucenter用户-->
+    <dubbo:reference id="ucenterUserService" interface="com.thinkjoy.ucenter.rpc.api.UcenterUserService"/>
+
+    <!--ucenter用户身份-->
+    <dubbo:reference id="ucenterUserIdentityService" interface="com.thinkjoy.ucenter.rpc.api.UcenterUserIdentityService"/>
+
+    <!--ucenter学校-->
+    <dubbo:reference id="ucenterSchoolService" interface="com.thinkjoy.ucenter.rpc.api.UcenterSchoolService"/>
+
+    <!--ams项目应用-->
+    <dubbo:reference id="amsProjectAppService" interface="com.thinkjoy.ams.rpc.api.AmsProjectAppService"/>
+
+    <!--ams个性应用-->
+    <dubbo:reference id="amsPerprojectAppService" interface="com.thinkjoy.ams.rpc.api.AmsPerprojectAppService"/>
+
+    <!--oauthclient-->
+    <dubbo:reference id="oauthClientDetailsService" interface="com.thinkjoy.ams.rpc.api.OauthClientDetailsService"/>
+
+
+    <dubbo:reference id="ucenterDictValuesService" interface="com.thinkjoy.ucenter.rpc.api.UcenterDictValuesService"/>
+
+    <!--ams应用权限-->
+    <dubbo:reference id="amsApppermissionService" interface="com.thinkjoy.ams.rpc.api.AmsApppermissionService"/>
+
+    <!--ams应用角色-->
+    <dubbo:reference id="amsApproleService" interface="com.thinkjoy.ams.rpc.api.AmsApproleService"/>
+
+    <!--ams用户角色关联-->
+    <dubbo:reference id="amsUserApproleService" interface="com.thinkjoy.ams.rpc.api.AmsUserApproleService"/>
+
+    <!--ams应用角色权限-->
+    <dubbo:reference id="amsApprolePermissionService" interface="com.thinkjoy.ams.rpc.api.AmsApprolePermissionService"/>
+
+</beans>

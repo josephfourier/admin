@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!--项目名称-->
+    <dubbo:application name="thinkjoy-enrollment-admin"/>
+
+    <dubbo:registry address="${dubbo.registry.address}"/>
+
+
+    <!-- 用户中心接口服务 -->
+    <dubbo:reference id="ucenterApiService" interface="com.thinkjoy.ucenter.rpc.api.UcenterApiService" mock="true"/>
+    <!-- 日志切面需要用到此接口-->
+    <dubbo:reference id="upmsApiService" interface="com.thinkjoy.upms.rpc.api.UpmsApiService" mock="true"/>
+    <!-- manageController初始化菜单时用到-->
+    <dubbo:reference id="upmsSystemService" interface="com.thinkjoy.upms.rpc.api.UpmsSystemService" mock="true"/>
+    <!--字典值表-->
+    <dubbo:reference id="ucenterDictValuesService" interface="com.thinkjoy.ucenter.rpc.api.UcenterDictValuesService" mock="true"/>
+    <!-- 行政区划 -->
+    <dubbo:reference id="ucenterAreaService" interface="com.thinkjoy.ucenter.rpc.api.UcenterAreaService" mock="true"/>
+
+    <!--招生批次-->
+    <dubbo:reference id="enrollBatchService" interface="com.thinkjoy.enrollment.rpc.api.EnrollBatchService" mock="true"/>
+    <!--学生-->
+    <dubbo:reference id="enrollStudentService" interface="com.thinkjoy.enrollment.rpc.api.EnrollStudentService" mock="true"/>
+    <!--学生家庭成员-->
+    <dubbo:reference id="enrollFamilyService" interface="com.thinkjoy.enrollment.rpc.api.EnrollFamilyService" mock="true"/>
+    <!--专业变更日志-->
+    <dubbo:reference id="enrollSpecialtychangeLogService" interface="com.thinkjoy.enrollment.rpc.api.EnrollSpecialtychangeLogService" mock="true"/>
+    <!--招生老师-->
+    <dubbo:reference id="enrollTeacherService" interface="com.thinkjoy.enrollment.rpc.api.EnrollTeacherService" mock="true"/>
+    <dubbo:reference id="enrollChargeitemService" interface="com.thinkjoy.enrollment.rpc.api.EnrollChargeitemService" mock="true"/>
+    <dubbo:reference id="enrollChargedetailService" interface="com.thinkjoy.enrollment.rpc.api.EnrollChargedetailService" mock="true"/>
+    <dubbo:reference id="enrollChargedetailSpecialtyService" interface="com.thinkjoy.enrollment.rpc.api.EnrollChargedetailSpecialtyService" mock="true"/>
+    <dubbo:reference id="enrollPlanService" interface="com.thinkjoy.enrollment.rpc.api.EnrollPlanService" mock="true"/>
+
+
+    <!-- 用户中心接口服务 -->
+    <dubbo:reference id="ucenterUserService" interface="com.thinkjoy.ucenter.rpc.api.UcenterUserService" mock="true"/>
+    <dubbo:reference id="ucenterTeacherService" interface="com.thinkjoy.ucenter.rpc.api.UcenterTeacherService" mock="true"/>
+    <dubbo:reference id="ucenterDepartmentService" interface="com.thinkjoy.ucenter.rpc.api.UcenterDepartmentService" mock="true"/>
+    <dubbo:reference id="ucenterSpecialtyService" interface="com.thinkjoy.ucenter.rpc.api.UcenterSpecialtyService" mock="true"/>
+    <dubbo:reference id="ucenterFacultyService" interface="com.thinkjoy.ucenter.rpc.api.UcenterFacultyService" mock="true"/>
+    <dubbo:reference id="ucenterStudentService" interface="com.thinkjoy.ucenter.rpc.api.UcenterStudentService" mock="true"/>
+    <dubbo:reference id="ucenterSchoolService" interface="com.thinkjoy.ucenter.rpc.api.UcenterSchoolService" mock="true"/>
+    <dubbo:reference id="ucenterClassService" interface="com.thinkjoy.ucenter.rpc.api.UcenterClassService" mock="true"/>
+
+    <!-- manageController初始化菜单时用到-->
+    <dubbo:reference id="amsAppService" interface="com.thinkjoy.ams.rpc.api.AmsAppService" mock="true"/>
+    <dubbo:reference id="amsApppermissionService" interface="com.thinkjoy.ams.rpc.api.AmsApppermissionService" mock="true"/>
+    <dubbo:reference id="amsApproleService" interface="com.thinkjoy.ams.rpc.api.AmsApproleService" mock="true"/>
+    <dubbo:reference id="oauthClientDetailsService" interface="com.thinkjoy.ams.rpc.api.OauthClientDetailsService" mock="true"/>
+
+    <dubbo:reference id="enrollTemplateService" interface="com.thinkjoy.enrollment.rpc.api.EnrollTemplateService" mock="true"/>
+
+    <dubbo:reference id="enrollOrderService" interface="com.thinkjoy.enrollment.rpc.api.EnrollOrderService" mock="true"/>
+
+
+</beans>

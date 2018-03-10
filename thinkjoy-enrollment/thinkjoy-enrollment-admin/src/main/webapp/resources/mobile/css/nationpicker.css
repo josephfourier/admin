@@ -1,0 +1,64 @@
+dl, dt, dd, ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.picker-box-nation {
+    -webkit-user-select: none;
+}
+
+.picker-box-nation dt {
+    background-color: #eeeeee;
+    padding: 5px 20px;
+}
+
+.picker-box-nation dd {
+    padding: 8px 20px;
+    font-size: 15px;
+    color: #333333;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.nation-picker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    overflow: auto;
+    width: 100%;
+    z-index:9999;
+}
+
+.direction-picker li {
+    padding: 10px 20px;
+    font-size: 15px;
+    border-bottom: 1px solid #eeeeee;
+    color: #333333;
+}
+
+.picker-box-nation .prompt {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    border-radius: 50%;
+    background-color: gray;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index:10003;
+}

@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>thinkjoy</artifactId>
+        <groupId>com.thinkjoy</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.thinkjoy</groupId>
+    <artifactId>thinkjoy-ams</artifactId>
+    <version>1.0.0</version>
+    <modules>
+        <module>thinkjoy-ams-admin</module>
+        <module>thinkjoy-ams-common</module>
+        <module>thinkjoy-ams-rpc-api</module>
+        <module>thinkjoy-ams-rpc-service</module>
+        <module>thinkjoy-ams-dao</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>thinkjoy-ams</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+    </properties>
+
+
+</project>

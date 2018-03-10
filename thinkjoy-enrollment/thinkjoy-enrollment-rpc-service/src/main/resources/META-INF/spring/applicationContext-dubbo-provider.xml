@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+
+    <dubbo:application name="thinkjoy-enrollment-rpc-service"/>
+
+    <dubbo:registry address="${dubbo.registry.address}"/>
+
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
+
+    <!--招生批次-->
+    <bean id="enrollBatchServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollBatchServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollBatchService" ref="enrollBatchServiceImpl" timeout="10000"/>
+    <!--学生-->
+    <bean id="enrollStudentServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollStudentServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollStudentService" ref="enrollStudentServiceImpl" timeout="10000"/>
+    <!--学生家庭成员-->
+    <bean id="enrollFamilyServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollFamilyServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollFamilyService" ref="enrollFamilyServiceImpl" timeout="10000"/>
+    <!--专业变更日志-->
+    <bean id="enrollSpecialtychangeLogServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollSpecialtychangeLogServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollSpecialtychangeLogService" ref="enrollSpecialtychangeLogServiceImpl" timeout="10000"/>
+    <!--招生老师-->
+    <bean id="enrollTeacherServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollTeacherServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollTeacherService" ref="enrollTeacherServiceImpl" timeout="10000"/>
+
+    <!--缴费类别-->
+    <bean id="enrollChargeitemServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollChargeitemServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollChargeitemService" ref="enrollChargeitemServiceImpl" timeout="10000"/>
+    <!--缴费项目-->
+    <bean id="enrollChargedetailServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollChargedetailServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollChargedetailService" ref="enrollChargedetailServiceImpl" timeout="10000"/>
+    <bean id="enrollChargedetailSpecialtyServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollChargedetailSpecialtyServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollChargedetailSpecialtyService" ref="enrollChargedetailSpecialtyServiceImpl" timeout="10000"/>
+    <bean id="enrollPlanServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollPlanServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollPlanService" ref="enrollPlanServiceImpl" timeout="10000"/>
+
+    <bean id="enrollTemplateServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollTemplateServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollTemplateService" ref="enrollTemplateServiceImpl" timeout="10000"/>
+
+    <bean id="enrollOrderServiceImpl" class="com.thinkjoy.enrollment.rpc.service.impl.EnrollOrderServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.enrollment.rpc.api.EnrollOrderService" ref="enrollOrderServiceImpl" timeout="10000"/>
+
+</beans>

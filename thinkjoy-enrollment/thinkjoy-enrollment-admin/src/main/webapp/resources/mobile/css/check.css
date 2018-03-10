@@ -1,0 +1,132 @@
+body{
+    -webkit-user-select:initial;
+    font-family: "Microsoft YaHei UI", sans-serif;
+    background-color: #fff;
+}
+#header {
+    background:#0695fa;
+    height: 180px;
+}
+
+/* reject */
+#header.reject{
+    background: #0695FA url(../imgs/img_wlq.png) 0 35px repeat-x;
+    -webkit-background-size: 750px 150px;
+    background-size: 375px 150px;
+    height: 180px;
+    position: relative;
+}
+#header.reject>.reject-desc{
+    position: absolute;
+    right: 25px;
+    top: 65px;
+}
+#header.reject>.desc>p:nth-child(2){
+    font-size: 15px;
+}
+#header.reject>.desc>p:nth-child(1){
+    margin-bottom: 5px;
+}
+
+/* end reject */
+
+/* enroll */
+#header.enroll{
+    background: #1a164e url(../imgs/img_lq.png) 0 0 no-repeat;
+    -webkit-background-size: 750px 150px;
+    background-size: 375px 150px;
+    height: 150px;
+    position: relative;
+}
+#header.enroll>.enroll-desc,
+#header.pre-enroll>.pre-enroll-desc{
+    position: absolute;
+    left: 200px;
+    top: 46px;
+}
+#header.enroll>.desc>p:nth-child(2){
+    font-size: 15px;
+}
+#header.enroll>.desc>p:nth-child(1){
+    margin-bottom: 5px;
+}
+
+#detail>.item span.money{
+    color: red;
+}
+/* end enroll*/
+
+/* pre-enroll*/
+#header.pre-enroll{
+    background: #1a164e url(../imgs/img_ylq.png) 0 0 no-repeat;
+    -webkit-background-size: 750px 150px;
+    background-size: 375px 150px;
+    height: 150px;
+    position: relative;
+}
+/* end pre-enroll*/
+
+#header>.img-container {
+    width: 180px;
+    height: 147px;
+    position: relative;
+    top: 5px;
+    left: 4px;
+}
+#header>.img-container>img{
+    width: 180px;
+    height: 147px;
+}
+
+#header>.desc{
+    position: absolute;
+}
+
+#header>.desc.check-desc{
+    left: 180px;
+    top: 50px;
+}
+
+#header>.desc>p:nth-child(1){
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+#header>.desc>p:nth-child(2){
+    font-size: 13px;
+    line-height: 18px;
+    margin-right: 25px;
+}
+
+.ui-header ~ .ui-container {
+    border-top: 110px solid transparent;
+}
+#detail{
+    padding-left: 20px;
+    padding-top: 25px;
+}
+#detail>.item{
+    margin-bottom: 12px;
+}
+#detail>.item>span{
+    font-size: 15px;
+}
+#detail>.item>span:nth-child(1){
+    color: #555555;
+}
+#detail>.item>span:nth-child(2){
+    color: #222222;
+}
+.query{
+    display: block;
+    width: 80%;
+    background-color: #0593fd;
+    color: #FFFFFF;
+    text-align: center;
+    height: 46px;
+    line-height: 46px;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 23px;
+    margin: 30px auto;
+}

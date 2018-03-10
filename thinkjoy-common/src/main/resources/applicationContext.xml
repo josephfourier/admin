@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/task
+          http://www.springframework.org/schema/task/spring-task.xsd">
+
+	<!-- 装载service -->
+	<context:component-scan base-package="**.service" />
+
+	<!-- 装载自定义bean -->
+	<context:component-scan base-package="**.*" use-default-filters="false">
+		<context:include-filter type="assignable" expression="com.thinkjoy.common.base.BaseInterface"></context:include-filter>
+	</context:component-scan>
+
+	<!-- 启动时初始化Spring上下文环境工具类 -->
+	<bean id="springContextUtil" class="com.thinkjoy.common.util.SpringContextUtil"></bean>
+
+	<!-- 启动任务注解 -->
+	<task:annotation-driven />
+	<context:component-scan base-package="**.task" />
+
+	<!--zk config-->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="order" value="1" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+
+	<bean id="zkResource" class="com.thinkjoy.zkconfig.sz.ZookeeperResource" />
+	<bean id="zkPropConfigurer" class="com.thinkjoy.zkconfig.sz.ZookeeperConfigurer">
+		<property name="order" value="2" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="location">
+			<ref bean="zkResource" />
+		</property>
+	</bean>
+
+</beans>

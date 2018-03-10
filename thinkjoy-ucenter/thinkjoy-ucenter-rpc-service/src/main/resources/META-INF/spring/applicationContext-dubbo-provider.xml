@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="thinkjoy-ucneter-rpc-service"/>
+
+    <dubbo:registry address="${dubbo.registry.address}"/>
+
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}"/>
+
+    <!-- 行政区划 -->
+    <bean id="ucenterAreaService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterAreaServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterAreaService" ref="ucenterAreaService" timeout="10000" />
+    <!--组织机构-->
+    <bean id="ucenterAgencyService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterAgencyServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterAgencyService" ref="ucenterAgencyService" timeout="10000"/>
+    <!--字典表-->
+    <bean id="ucenterDictService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterDictServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterDictService" ref="ucenterDictService" timeout="10000"/>
+    <!--字典值表-->
+    <bean id="ucenterDictValuesService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterDictValuesServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterDictValuesService" ref="ucenterDictValuesService" timeout="10000"/>
+    <!--学校表-->
+    <bean id="ucenterSchoolService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterSchoolServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterSchoolService" ref="ucenterSchoolService" timeout="10000"/>
+    <!--用户身份表-->
+    <bean id="ucenterUserIdentityService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterUserIdentityServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterUserIdentityService" ref="ucenterUserIdentityService" timeout="10000"/>
+    <!--用户表-->
+    <bean id="ucenterUserService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterUserServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterUserService" ref="ucenterUserService" timeout="10000"/>
+    <!--用户类型表-->
+    <bean id="ucenterUsertypeService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterUsertypeServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterUsertypeService" ref="ucenterUsertypeService" timeout="10000"/>
+    <!--用户中心api-->
+    <bean id="ucenterApiService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterApiServiceImpl" />
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterApiService" ref="ucenterApiService" timeout="10000"/>
+    <!--学生表-->
+    <bean id="ucenterStudentService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterStudentServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterStudentService" ref="ucenterStudentService" timeout="10000"/>
+
+    <!--学校院系表-->
+    <bean id="ucenterFacultyService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterFacultyServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterFacultyService" ref="ucenterFacultyService" timeout="10000"/>
+
+    <!--学校部门表-->
+    <bean id="ucenterDepartmentService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterDepartmentServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterDepartmentService" ref="ucenterDepartmentService" timeout="10000"/>
+    <!--学校专业表-->
+    <bean id="ucenterSpecialtyService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterSpecialtyServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterSpecialtyService" ref="ucenterSpecialtyService" timeout="10000"/>
+    <!--学校专业方向表-->
+    <bean id="ucenterTrainingdirectionService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterTrainingdirectionServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterTrainingdirectionService" ref="ucenterTrainingdirectionService" timeout="10000"/>
+    <!--学校专业表-->
+    <bean id="ucenterClassService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterClassServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterClassService" ref="ucenterClassService" timeout="10000"/>
+    <!--学校老师表-->
+    <bean id="ucenterTeacherService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterTeacherServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterTeacherService" ref="ucenterTeacherService" timeout="10000"/>
+
+    <!--学校老师表-->
+    <bean id="ucenterTeacherSpecialtyService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterTeacherSpecialtyServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterTeacherSpecialtyService" ref="ucenterTeacherSpecialtyService" timeout="10000"/>
+
+    <!--学校老师表-->
+    <bean id="ucenterTeacherClassService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterTeacherClassServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterTeacherClassService" ref="ucenterTeacherClassService" timeout="10000"/>
+    <!--职务表-->
+    <bean id="ucenterPostService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterPostServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterPostService" ref="ucenterPostService" timeout="10000"/>
+
+    <!--部门-院系/班级表-->
+    <bean id="ucenterDepartmentBusService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterDepartmentBusServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterDepartmentBusService" ref="ucenterDepartmentBusService" timeout="10000"/>
+
+    <!--部门-老师-职务表-->
+    <bean id="ucenterTeacherPostService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterTeacherPostServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterTeacherPostService" ref="ucenterTeacherPostService" timeout="10000"/>
+
+    <!--数据同步日志表-->
+    <bean id="ucenterDatasyncLogService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterDatasyncLogServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterDatasyncLogService" ref="ucenterDatasyncLogService" timeout="10000"/>
+
+
+    <bean id="ucenterPaySettingService" class="com.thinkjoy.ucenter.rpc.service.impl.UcenterPaySettingServiceImpl"/>
+    <dubbo:service interface="com.thinkjoy.ucenter.rpc.api.UcenterPaySettingService" ref="ucenterPaySettingService" timeout="10000"/>
+</beans>

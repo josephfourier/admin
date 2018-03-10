@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ucenter.dao.mapper.UcenterPaySettingMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.ucenter.dao.model.UcenterPaySetting">
+    <id column="paysetting_id" jdbcType="INTEGER" property="paysettingId" />
+    <result column="mch_name" jdbcType="VARCHAR" property="mchName" />
+    <result column="mch_id" jdbcType="VARCHAR" property="mchId" />
+    <result column="mck_key" jdbcType="VARCHAR" property="mckKey" />
+    <result column="mch_backurl" jdbcType="VARCHAR" property="mchBackurl" />
+    <result column="mch_pageurl" jdbcType="VARCHAR" property="mchPageurl" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="ctime" jdbcType="BIGINT" property="ctime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="school_code" jdbcType="VARCHAR" property="schoolCode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    paysetting_id, mch_name, mch_id, mck_key, mch_backurl, mch_pageurl, description, 
+    creator, ctime, status, school_code
+  </sql>
+  <select id="selectByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterPaySettingExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ucenter_pay_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ucenter_pay_setting
+    where paysetting_id = #{paysettingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ucenter_pay_setting
+    where paysetting_id = #{paysettingId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterPaySettingExample">
+    delete from ucenter_pay_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.ucenter.dao.model.UcenterPaySetting">
+    insert into ucenter_pay_setting (paysetting_id, mch_name, mch_id, 
+      mck_key, mch_backurl, mch_pageurl, 
+      description, creator, ctime, 
+      status, school_code)
+    values (#{paysettingId,jdbcType=INTEGER}, #{mchName,jdbcType=VARCHAR}, #{mchId,jdbcType=VARCHAR}, 
+      #{mckKey,jdbcType=VARCHAR}, #{mchBackurl,jdbcType=VARCHAR}, #{mchPageurl,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{ctime,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{schoolCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterPaySetting">
+    insert into ucenter_pay_setting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paysettingId != null">
+        paysetting_id,
+      </if>
+      <if test="mchName != null">
+        mch_name,
+      </if>
+      <if test="mchId != null">
+        mch_id,
+      </if>
+      <if test="mckKey != null">
+        mck_key,
+      </if>
+      <if test="mchBackurl != null">
+        mch_backurl,
+      </if>
+      <if test="mchPageurl != null">
+        mch_pageurl,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="schoolCode != null">
+        school_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paysettingId != null">
+        #{paysettingId,jdbcType=INTEGER},
+      </if>
+      <if test="mchName != null">
+        #{mchName,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null">
+        #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="mckKey != null">
+        #{mckKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mchBackurl != null">
+        #{mchBackurl,jdbcType=VARCHAR},
+      </if>
+      <if test="mchPageurl != null">
+        #{mchPageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolCode != null">
+        #{schoolCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterPaySettingExample" resultType="java.lang.Long">
+    select count(*) from ucenter_pay_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ucenter_pay_setting
+    <set>
+      <if test="record.paysettingId != null">
+        paysetting_id = #{record.paysettingId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mchName != null">
+        mch_name = #{record.mchName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mchId != null">
+        mch_id = #{record.mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mckKey != null">
+        mck_key = #{record.mckKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mchBackurl != null">
+        mch_backurl = #{record.mchBackurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mchPageurl != null">
+        mch_pageurl = #{record.mchPageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ctime != null">
+        ctime = #{record.ctime,jdbcType=BIGINT},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolCode != null">
+        school_code = #{record.schoolCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ucenter_pay_setting
+    set paysetting_id = #{record.paysettingId,jdbcType=INTEGER},
+      mch_name = #{record.mchName,jdbcType=VARCHAR},
+      mch_id = #{record.mchId,jdbcType=VARCHAR},
+      mck_key = #{record.mckKey,jdbcType=VARCHAR},
+      mch_backurl = #{record.mchBackurl,jdbcType=VARCHAR},
+      mch_pageurl = #{record.mchPageurl,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      ctime = #{record.ctime,jdbcType=BIGINT},
+      status = #{record.status,jdbcType=VARCHAR},
+      school_code = #{record.schoolCode,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterPaySetting">
+    update ucenter_pay_setting
+    <set>
+      <if test="mchName != null">
+        mch_name = #{mchName,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null">
+        mch_id = #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="mckKey != null">
+        mck_key = #{mckKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mchBackurl != null">
+        mch_backurl = #{mchBackurl,jdbcType=VARCHAR},
+      </if>
+      <if test="mchPageurl != null">
+        mch_pageurl = #{mchPageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        ctime = #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolCode != null">
+        school_code = #{schoolCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where paysetting_id = #{paysettingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thinkjoy.ucenter.dao.model.UcenterPaySetting">
+    update ucenter_pay_setting
+    set mch_name = #{mchName,jdbcType=VARCHAR},
+      mch_id = #{mchId,jdbcType=VARCHAR},
+      mck_key = #{mckKey,jdbcType=VARCHAR},
+      mch_backurl = #{mchBackurl,jdbcType=VARCHAR},
+      mch_pageurl = #{mchPageurl,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      school_code = #{schoolCode,jdbcType=VARCHAR}
+    where paysetting_id = #{paysettingId,jdbcType=INTEGER}
+  </update>
+
+  <select id="getPaySettingListByOrderId" parameterType="java.lang.String" resultMap="BaseResultMap">
+   select t1.* from ucenter_pay_setting t1 LEFT join  enroll_order t2 ON
+t1.school_code=t2.school_code and
+order_id=#{order_id}
+  </select>
+
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+</mapper>

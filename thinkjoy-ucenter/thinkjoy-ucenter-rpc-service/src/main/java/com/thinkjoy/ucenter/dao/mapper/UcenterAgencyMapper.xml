@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ucenter.dao.mapper.UcenterAgencyMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.ucenter.dao.model.UcenterAgency">
+    <id column="agency_id" jdbcType="INTEGER" property="agencyId" />
+    <result column="agency_code" jdbcType="VARCHAR" property="agencyCode" />
+    <result column="agency_name" jdbcType="VARCHAR" property="agencyName" />
+    <result column="pagency_code" jdbcType="VARCHAR" property="pagencyCode" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="area_type" jdbcType="VARCHAR" property="areaType" />
+    <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
+    <result column="agency_phone" jdbcType="VARCHAR" property="agencyPhone" />
+    <result column="is_parent" jdbcType="VARCHAR" property="isParent" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="ctime" jdbcType="BIGINT" property="ctime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="orders" jdbcType="BIGINT" property="orders" />
+    <result column="pagency_codes" jdbcType="VARCHAR" property="pagencyCodes" />
+    <result column="area_codes" jdbcType="VARCHAR" property="areaCodes" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    agency_id, agency_code, agency_name, pagency_code, short_name, url, area_type, area_code, 
+    agency_phone, is_parent, creator, ctime, description, status, orders, pagency_codes, 
+    area_codes
+  </sql>
+  <select id="selectByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterAgencyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ucenter_agency
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ucenter_agency
+    where agency_id = #{agencyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ucenter_agency
+    where agency_id = #{agencyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterAgencyExample">
+    delete from ucenter_agency
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.ucenter.dao.model.UcenterAgency">
+    insert into ucenter_agency (agency_id, agency_code, agency_name, 
+      pagency_code, short_name, url, 
+      area_type, area_code, agency_phone, 
+      is_parent, creator, ctime, 
+      description, status, orders, 
+      pagency_codes, area_codes)
+    values (#{agencyId,jdbcType=INTEGER}, #{agencyCode,jdbcType=VARCHAR}, #{agencyName,jdbcType=VARCHAR}, 
+      #{pagencyCode,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{areaType,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR}, #{agencyPhone,jdbcType=VARCHAR}, 
+      #{isParent,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{ctime,jdbcType=BIGINT}, 
+      #{description,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{orders,jdbcType=BIGINT}, 
+      #{pagencyCodes,jdbcType=VARCHAR}, #{areaCodes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterAgency">
+    insert into ucenter_agency
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+      <if test="agencyCode != null">
+        agency_code,
+      </if>
+      <if test="agencyName != null">
+        agency_name,
+      </if>
+      <if test="pagencyCode != null">
+        pagency_code,
+      </if>
+      <if test="shortName != null">
+        short_name,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="areaType != null">
+        area_type,
+      </if>
+      <if test="areaCode != null">
+        area_code,
+      </if>
+      <if test="agencyPhone != null">
+        agency_phone,
+      </if>
+      <if test="isParent != null">
+        is_parent,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="orders != null">
+        orders,
+      </if>
+      <if test="pagencyCodes != null">
+        pagency_codes,
+      </if>
+      <if test="areaCodes != null">
+        area_codes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyCode != null">
+        #{agencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyName != null">
+        #{agencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="pagencyCode != null">
+        #{pagencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="areaType != null">
+        #{areaType,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null">
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyPhone != null">
+        #{agencyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isParent != null">
+        #{isParent,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="orders != null">
+        #{orders,jdbcType=BIGINT},
+      </if>
+      <if test="pagencyCodes != null">
+        #{pagencyCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCodes != null">
+        #{areaCodes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterAgencyExample" resultType="java.lang.Long">
+    select count(*) from ucenter_agency
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ucenter_agency
+    <set>
+      <if test="record.agencyId != null">
+        agency_id = #{record.agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.agencyCode != null">
+        agency_code = #{record.agencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agencyName != null">
+        agency_name = #{record.agencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pagencyCode != null">
+        pagency_code = #{record.pagencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shortName != null">
+        short_name = #{record.shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaType != null">
+        area_type = #{record.areaType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaCode != null">
+        area_code = #{record.areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agencyPhone != null">
+        agency_phone = #{record.agencyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isParent != null">
+        is_parent = #{record.isParent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ctime != null">
+        ctime = #{record.ctime,jdbcType=BIGINT},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orders != null">
+        orders = #{record.orders,jdbcType=BIGINT},
+      </if>
+      <if test="record.pagencyCodes != null">
+        pagency_codes = #{record.pagencyCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaCodes != null">
+        area_codes = #{record.areaCodes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ucenter_agency
+    set agency_id = #{record.agencyId,jdbcType=INTEGER},
+      agency_code = #{record.agencyCode,jdbcType=VARCHAR},
+      agency_name = #{record.agencyName,jdbcType=VARCHAR},
+      pagency_code = #{record.pagencyCode,jdbcType=VARCHAR},
+      short_name = #{record.shortName,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR},
+      area_type = #{record.areaType,jdbcType=VARCHAR},
+      area_code = #{record.areaCode,jdbcType=VARCHAR},
+      agency_phone = #{record.agencyPhone,jdbcType=VARCHAR},
+      is_parent = #{record.isParent,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      ctime = #{record.ctime,jdbcType=BIGINT},
+      description = #{record.description,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      orders = #{record.orders,jdbcType=BIGINT},
+      pagency_codes = #{record.pagencyCodes,jdbcType=VARCHAR},
+      area_codes = #{record.areaCodes,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterAgency">
+    update ucenter_agency
+    <set>
+      <if test="agencyCode != null">
+        agency_code = #{agencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyName != null">
+        agency_name = #{agencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="pagencyCode != null">
+        pagency_code = #{pagencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="areaType != null">
+        area_type = #{areaType,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null">
+        area_code = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyPhone != null">
+        agency_phone = #{agencyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isParent != null">
+        is_parent = #{isParent,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        ctime = #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="orders != null">
+        orders = #{orders,jdbcType=BIGINT},
+      </if>
+      <if test="pagencyCodes != null">
+        pagency_codes = #{pagencyCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCodes != null">
+        area_codes = #{areaCodes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where agency_id = #{agencyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thinkjoy.ucenter.dao.model.UcenterAgency">
+    update ucenter_agency
+    set agency_code = #{agencyCode,jdbcType=VARCHAR},
+      agency_name = #{agencyName,jdbcType=VARCHAR},
+      pagency_code = #{pagencyCode,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      area_type = #{areaType,jdbcType=VARCHAR},
+      area_code = #{areaCode,jdbcType=VARCHAR},
+      agency_phone = #{agencyPhone,jdbcType=VARCHAR},
+      is_parent = #{isParent,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=BIGINT},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      orders = #{orders,jdbcType=BIGINT},
+      pagency_codes = #{pagencyCodes,jdbcType=VARCHAR},
+      area_codes = #{areaCodes,jdbcType=VARCHAR}
+    where agency_id = #{agencyId,jdbcType=INTEGER}
+  </update>
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+  <select id="selectMaxCodeByMap" parameterType="java.util.Map" resultType="java.lang.String">
+    select MAX(agency_code)
+    from ucenter_agency
+    <where>
+      <if test="areaType != null">
+        and area_type = #{areaType,jdbcType=VARCHAR}
+      </if>
+      <if test="pagencyCode != null">
+        and pagency_code = #{pagencyCode,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

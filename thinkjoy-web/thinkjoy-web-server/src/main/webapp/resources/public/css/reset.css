@@ -1,0 +1,96 @@
+/* forget */
+body,h1,h2,h3,h4,h5,p,b,dl,dd,ul,ol,form,input,textarea,th,td,select { margin:0; padding:0; }
+em { font-style:normal; }
+li { list-style:none; }
+a { text-decoration:none; }
+img { border:none; vertical-align:top; }
+table { border-collapse:collapse; }
+input,textarea { outline:none; }
+textarea { resize:none; overflow:auto; }
+/* body { font-size:12px; font-family:"微软雅黑"; background-color:#ffffff;}
+ */
+body {background-color:#ffffff;font:12px/1.5 Microsoft YaHei,tahoma,arial,Hiragino Sans GB,\\5b8b\4f53,sans-serif;}
+
+/* end forget */
+
+/* public */
+.clear {zoom:1;}
+.clear:after {content:'';display:block;clear:both;}
+.fl{float:left;}
+.fr{float:right;}
+
+@font-face {
+    font-family: 'fzltxh';
+    src: url(../font/fzltxh.ttf);
+}
+@font-face {
+    font-family: 'fzltcxh';
+    src: url(../font/fzltcxh.ttf);
+}
+@font-face {
+    font-family: 'fzltzh';
+    src: url(../font/fzltzh.ttf);
+}
+@font-face{
+    font-family: 'fzlth';
+    src: url(../font/fzlth.ttf);
+}
+
+
+.sl-group {
+    padding: 30px 20px 0;
+}
+
+.sl-group .sl .select2-container--default .select2-selection--single .select2-selection__rendered,
+.sl .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 32px;
+}
+
+.sl-group .sl .select2-container .select2-selection--single,
+.sl .select2-container .select2-selection--single {
+    height: 34px;
+}
+
+.sl-group .sl .select2-container--default .select2-selection--single .select2-selection__arrow,
+.sl .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 4px;
+}
+
+.sl-group .sl {
+    display: inline-block;
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
+
+.sl-group .sl .label, .sl .label {
+    margin-right: 10px;
+    min-width: 48px;
+    display: inline-block;
+    text-align: right;
+}
+
+.sl-group .sl input[type=button] {
+    width: 68px;
+    height: 34px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    border: 1px solid #0593fd;
+    cursor: pointer;
+    background: #0593fd;
+    outline: none;
+}
+
+.sl .select2-container--default .select2-selection--single,
+.select2-container .select2-dropdown {
+    border-color: #e2e2e2;
+}
+
+
+.sl-group {
+    background-color: #FFFFFF;
+}
+.select2-container--default .select2-results__option[aria-disabled=true] {
+    display: none;        }
+span {
+    outline:none;
+}

@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ucenter.dao.mapper.UcenterSpecialtyMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.ucenter.dao.model.UcenterSpecialty">
+    <id column="specialty_id" jdbcType="INTEGER" property="specialtyId" />
+    <result column="specialty_code" jdbcType="VARCHAR" property="specialtyCode" />
+    <result column="specialty_no" jdbcType="VARCHAR" property="specialtyNo" />
+    <result column="specialty_name" jdbcType="VARCHAR" property="specialtyName" />
+    <result column="trdr_id" jdbcType="INTEGER" property="trdrId" />
+    <result column="trdr_name" jdbcType="VARCHAR" property="trdrName" />
+    <result column="specialty_type" jdbcType="VARCHAR" property="specialtyType" />
+    <result column="specialty_jc" jdbcType="VARCHAR" property="specialtyJc" />
+    <result column="specialty_enname" jdbcType="VARCHAR" property="specialtyEnname" />
+    <result column="faculty_code" jdbcType="VARCHAR" property="facultyCode" />
+    <result column="faculty_name" jdbcType="VARCHAR" property="facultyName" />
+    <result column="school_system" jdbcType="VARCHAR" property="schoolSystem" />
+    <result column="highest_education" jdbcType="VARCHAR" property="highestEducation" />
+    <result column="specialty_nature" jdbcType="VARCHAR" property="specialtyNature" />
+    <result column="enrollment_target" jdbcType="VARCHAR" property="enrollmentTarget" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="ctime" jdbcType="BIGINT" property="ctime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="school_code" jdbcType="VARCHAR" property="schoolCode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    specialty_id, specialty_code, specialty_no, specialty_name, trdr_id, trdr_name, specialty_type, 
+    specialty_jc, specialty_enname, faculty_code, faculty_name, school_system, highest_education, 
+    specialty_nature, enrollment_target, creator, ctime, description, status, year, school_code
+  </sql>
+  <select id="selectByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterSpecialtyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ucenter_specialty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ucenter_specialty
+    where specialty_id = #{specialtyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ucenter_specialty
+    where specialty_id = #{specialtyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterSpecialtyExample">
+    delete from ucenter_specialty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.ucenter.dao.model.UcenterSpecialty">
+    insert into ucenter_specialty (specialty_id, specialty_code, specialty_no, 
+      specialty_name, trdr_id, trdr_name, 
+      specialty_type, specialty_jc, specialty_enname, 
+      faculty_code, faculty_name, school_system, 
+      highest_education, specialty_nature, enrollment_target, 
+      creator, ctime, description, 
+      status, year, school_code
+      )
+    values (#{specialtyId,jdbcType=INTEGER}, #{specialtyCode,jdbcType=VARCHAR}, #{specialtyNo,jdbcType=VARCHAR}, 
+      #{specialtyName,jdbcType=VARCHAR}, #{trdrId,jdbcType=INTEGER}, #{trdrName,jdbcType=VARCHAR}, 
+      #{specialtyType,jdbcType=VARCHAR}, #{specialtyJc,jdbcType=VARCHAR}, #{specialtyEnname,jdbcType=VARCHAR}, 
+      #{facultyCode,jdbcType=VARCHAR}, #{facultyName,jdbcType=VARCHAR}, #{schoolSystem,jdbcType=VARCHAR}, 
+      #{highestEducation,jdbcType=VARCHAR}, #{specialtyNature,jdbcType=VARCHAR}, #{enrollmentTarget,jdbcType=VARCHAR}, 
+      #{creator,jdbcType=VARCHAR}, #{ctime,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{year,jdbcType=INTEGER}, #{schoolCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterSpecialty">
+    insert into ucenter_specialty
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="specialtyId != null">
+        specialty_id,
+      </if>
+      <if test="specialtyCode != null">
+        specialty_code,
+      </if>
+      <if test="specialtyNo != null">
+        specialty_no,
+      </if>
+      <if test="specialtyName != null">
+        specialty_name,
+      </if>
+      <if test="trdrId != null">
+        trdr_id,
+      </if>
+      <if test="trdrName != null">
+        trdr_name,
+      </if>
+      <if test="specialtyType != null">
+        specialty_type,
+      </if>
+      <if test="specialtyJc != null">
+        specialty_jc,
+      </if>
+      <if test="specialtyEnname != null">
+        specialty_enname,
+      </if>
+      <if test="facultyCode != null">
+        faculty_code,
+      </if>
+      <if test="facultyName != null">
+        faculty_name,
+      </if>
+      <if test="schoolSystem != null">
+        school_system,
+      </if>
+      <if test="highestEducation != null">
+        highest_education,
+      </if>
+      <if test="specialtyNature != null">
+        specialty_nature,
+      </if>
+      <if test="enrollmentTarget != null">
+        enrollment_target,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="schoolCode != null">
+        school_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="specialtyId != null">
+        #{specialtyId,jdbcType=INTEGER},
+      </if>
+      <if test="specialtyCode != null">
+        #{specialtyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyNo != null">
+        #{specialtyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyName != null">
+        #{specialtyName,jdbcType=VARCHAR},
+      </if>
+      <if test="trdrId != null">
+        #{trdrId,jdbcType=INTEGER},
+      </if>
+      <if test="trdrName != null">
+        #{trdrName,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyType != null">
+        #{specialtyType,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyJc != null">
+        #{specialtyJc,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyEnname != null">
+        #{specialtyEnname,jdbcType=VARCHAR},
+      </if>
+      <if test="facultyCode != null">
+        #{facultyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="facultyName != null">
+        #{facultyName,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolSystem != null">
+        #{schoolSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="highestEducation != null">
+        #{highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyNature != null">
+        #{specialtyNature,jdbcType=VARCHAR},
+      </if>
+      <if test="enrollmentTarget != null">
+        #{enrollmentTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="schoolCode != null">
+        #{schoolCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterSpecialtyExample" resultType="java.lang.Long">
+    select count(*) from ucenter_specialty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ucenter_specialty
+    <set>
+      <if test="record.specialtyId != null">
+        specialty_id = #{record.specialtyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.specialtyCode != null">
+        specialty_code = #{record.specialtyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialtyNo != null">
+        specialty_no = #{record.specialtyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialtyName != null">
+        specialty_name = #{record.specialtyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trdrId != null">
+        trdr_id = #{record.trdrId,jdbcType=INTEGER},
+      </if>
+      <if test="record.trdrName != null">
+        trdr_name = #{record.trdrName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialtyType != null">
+        specialty_type = #{record.specialtyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialtyJc != null">
+        specialty_jc = #{record.specialtyJc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialtyEnname != null">
+        specialty_enname = #{record.specialtyEnname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.facultyCode != null">
+        faculty_code = #{record.facultyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.facultyName != null">
+        faculty_name = #{record.facultyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolSystem != null">
+        school_system = #{record.schoolSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.highestEducation != null">
+        highest_education = #{record.highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialtyNature != null">
+        specialty_nature = #{record.specialtyNature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enrollmentTarget != null">
+        enrollment_target = #{record.enrollmentTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ctime != null">
+        ctime = #{record.ctime,jdbcType=BIGINT},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.year != null">
+        year = #{record.year,jdbcType=INTEGER},
+      </if>
+      <if test="record.schoolCode != null">
+        school_code = #{record.schoolCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ucenter_specialty
+    set specialty_id = #{record.specialtyId,jdbcType=INTEGER},
+      specialty_code = #{record.specialtyCode,jdbcType=VARCHAR},
+      specialty_no = #{record.specialtyNo,jdbcType=VARCHAR},
+      specialty_name = #{record.specialtyName,jdbcType=VARCHAR},
+      trdr_id = #{record.trdrId,jdbcType=INTEGER},
+      trdr_name = #{record.trdrName,jdbcType=VARCHAR},
+      specialty_type = #{record.specialtyType,jdbcType=VARCHAR},
+      specialty_jc = #{record.specialtyJc,jdbcType=VARCHAR},
+      specialty_enname = #{record.specialtyEnname,jdbcType=VARCHAR},
+      faculty_code = #{record.facultyCode,jdbcType=VARCHAR},
+      faculty_name = #{record.facultyName,jdbcType=VARCHAR},
+      school_system = #{record.schoolSystem,jdbcType=VARCHAR},
+      highest_education = #{record.highestEducation,jdbcType=VARCHAR},
+      specialty_nature = #{record.specialtyNature,jdbcType=VARCHAR},
+      enrollment_target = #{record.enrollmentTarget,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      ctime = #{record.ctime,jdbcType=BIGINT},
+      description = #{record.description,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      year = #{record.year,jdbcType=INTEGER},
+      school_code = #{record.schoolCode,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterSpecialty">
+    update ucenter_specialty
+    <set>
+      <if test="specialtyCode != null">
+        specialty_code = #{specialtyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyNo != null">
+        specialty_no = #{specialtyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyName != null">
+        specialty_name = #{specialtyName,jdbcType=VARCHAR},
+      </if>
+      <if test="trdrId != null">
+        trdr_id = #{trdrId,jdbcType=INTEGER},
+      </if>
+      <if test="trdrName != null">
+        trdr_name = #{trdrName,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyType != null">
+        specialty_type = #{specialtyType,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyJc != null">
+        specialty_jc = #{specialtyJc,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyEnname != null">
+        specialty_enname = #{specialtyEnname,jdbcType=VARCHAR},
+      </if>
+      <if test="facultyCode != null">
+        faculty_code = #{facultyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="facultyName != null">
+        faculty_name = #{facultyName,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolSystem != null">
+        school_system = #{schoolSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="highestEducation != null">
+        highest_education = #{highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyNature != null">
+        specialty_nature = #{specialtyNature,jdbcType=VARCHAR},
+      </if>
+      <if test="enrollmentTarget != null">
+        enrollment_target = #{enrollmentTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        ctime = #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="schoolCode != null">
+        school_code = #{schoolCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where specialty_id = #{specialtyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thinkjoy.ucenter.dao.model.UcenterSpecialty">
+    update ucenter_specialty
+    set specialty_code = #{specialtyCode,jdbcType=VARCHAR},
+      specialty_no = #{specialtyNo,jdbcType=VARCHAR},
+      specialty_name = #{specialtyName,jdbcType=VARCHAR},
+      trdr_id = #{trdrId,jdbcType=INTEGER},
+      trdr_name = #{trdrName,jdbcType=VARCHAR},
+      specialty_type = #{specialtyType,jdbcType=VARCHAR},
+      specialty_jc = #{specialtyJc,jdbcType=VARCHAR},
+      specialty_enname = #{specialtyEnname,jdbcType=VARCHAR},
+      faculty_code = #{facultyCode,jdbcType=VARCHAR},
+      faculty_name = #{facultyName,jdbcType=VARCHAR},
+      school_system = #{schoolSystem,jdbcType=VARCHAR},
+      highest_education = #{highestEducation,jdbcType=VARCHAR},
+      specialty_nature = #{specialtyNature,jdbcType=VARCHAR},
+      enrollment_target = #{enrollmentTarget,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=BIGINT},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      year = #{year,jdbcType=INTEGER},
+      school_code = #{schoolCode,jdbcType=VARCHAR}
+    where specialty_id = #{specialtyId,jdbcType=INTEGER}
+  </update>
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+    <select id="selectspecialtybeanMap" parameterType="java.util.Map" resultType="com.thinkjoy.ucenter.dao.model.UcenterSpecialty" resultMap="BaseResultMap">
+        select *
+        from ucenter_specialty
+        <where>
+            <if test="specialtyCode != null">
+                and specialty_code = #{specialtyCode,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolCode != null">
+                and school_code = #{schoolCode,jdbcType=VARCHAR}
+            </if>
+            <if test="year != null">
+                and year = #{year,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="selectspecialtyNobeanMap" parameterType="java.util.Map" resultType="com.thinkjoy.ucenter.dao.model.UcenterSpecialty" resultMap="BaseResultMap">
+        select *
+        from ucenter_specialty
+        <where>
+            <if test="specialtyNo != null">
+                and specialty_no = #{specialtyNo,jdbcType=VARCHAR}
+            </if>
+            <if test="schoolCode != null">
+                and school_code = #{schoolCode,jdbcType=VARCHAR}
+            </if>
+            <if test="year != null">
+                and year = #{year,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+</mapper>

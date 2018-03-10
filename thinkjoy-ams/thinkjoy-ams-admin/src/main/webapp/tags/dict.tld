@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+    <description>myFunctions library</description>
+    <display-name>JSTL functions</display-name>
+    <tlib-version>1.1</tlib-version>
+
+    <short-name>dict</short-name><!-- 定义标签使用的短名称 -->
+    <!--这里的uri，可以随便写 -->
+    <uri>http://www.thinkjoy-zjy.cn/functions</uri>
+
+    <!-- 自定义标签的形参都是域里面传递的参数值；自定义标签基本使用在jsp页面上 -->
+    <function>
+        <description>查询字典表中的数据</description><!-- 对该标签的说明 -->
+        <name>getValueByCode</name><!-- 定义标签名，放在短标签之后 -->
+        <function-class>com.thinkjoy.ams.admin.jstl.MyJstlFunctions</function-class><!-- 标签处理域值的类路径  -->
+        <function-signature>java.util.List getValueByCode(java.lang.String)</function-signature><!-- 标签处理域值的具体的类方法 -->
+        <example>${dict:getValueByCode(obj1)}</example><!-- 自定义标签的使用示范 ，域参数会自动传递到具体的方法里面-->
+    </function>
+
+</taglib>

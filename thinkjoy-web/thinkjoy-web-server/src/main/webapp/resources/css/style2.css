@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+/* forget */
+body,h1,h2,h3,h4,h5,p,b,dl,dd,ul,ol,form,input,textarea,th,td,select { margin:0; padding:0; }
+em { font-style:normal; }
+li { list-style:none; }
+a { text-decoration:none; }
+img { border:none; vertical-align:top; }
+table { border-collapse:collapse; }
+input,textarea { outline:none; }
+textarea { resize:none; overflow:auto; }
+/* body { font-size:12px; font-family:"微软雅黑"; background-color:#ffffff;}
+ */
+ body {background-color:#ffffff;font:12px/1.5 Microsoft YaHei,tahoma,arial,Hiragino Sans GB,\\5b8b\4f53,sans-serif;}
+
+/* end forget */
+
+/* public */
+.clear {zoom:1;}
+.clear:after {content:'';display:block;clear:both;}
+.fl{float:left;}
+.fr{float:right;}
+.wrap {margin:0 auto; width:1200px; position: relative;}
+.spacer {width:1px; height:30px; background-color:#ccc;display:inline-block;}
+.inline {display:inline-block;}
+@font-face {
+    font-family: FZLT;
+    src:url(exfzlt.ttf); /* 定义方正兰亭 */
+}
+.placeholder {}
+/* end public */
+
+/* layout */
+
+#header .wrap {padding-top: 25px; }
+#header {height:80px;  background-color:#ffffff;}
+#header .logo {display: inline-block; position:relative;width:250px;}
+#header .logo h1 {height: 50px; width:92px;
+    background:url(../images/logo3.png) no-repeat 0 -10px;
+    text-indent: -9999px; display:inline-block; cursor:pointer;}
+#header .logo b.spacer {width:2px; position:absolute;  height:20px;left:110px;top:6px;}
+#header .logo h2 { display: inline-block; position:absolute; top:3px; font-weight:normal; color:#333333;font-size:18px;left:130px; }
+/* layout end*/
+
+#header .h-nav {position: absolute; right: 0; top: 34px;}
+#header .h-nav li { float: left; font-size: 12px;  line-height:19px;font-family:"微软雅黑";}
+#header .h-nav li a {color: #333333;}
+#header .h-nav li a:hover {color: #0593fd;text-decoration:underline;}
+#header .h-nav li.spacer {margin: 0 15px; height:15px; background-color:#b3b3b3;position:relative;top:2px;}
+
+.content {height:540px;position:relative;}
+@media (min-width: 1200px) {
+	.content {background:url(../images/bg.png);}
+	.content.wave {width:100%;}
+}
+.content .login-wrap {position:relative;}
+.content .login-wrap>.wrap {z-index:2;}
+.content .login-banner {position:absolute;width:100%;top:0;left:0;z-index:1;}
+.content .login-banner img.banner-img {position:absolute; top:96px;left:130px;}
+.content .banner-bg {height:540px;}
+
+@media (max-width:1200px) {
+	.content .banner-bg {background:url(../images/bg.png);height:540px;}
+	.content .wave {width:1200px !important;}
+}
+.content .login-panel {width: 400px; height: 326px; border: 4px solid #0d89e3;background-color:#ffffff;z-index:2;position:relative;top:102px;right:90px;}
+.content .login-form {margin: 0 auto; width:328px;}
+.content .login-form input {border:none; outline: none; font-size:14px; width: 84%; float:left; padding: 14px 0 14px 10px;line-height: 20px; font-family: 微软雅黑;}
+.content .login-form .tip {height:22px; margin-top:6px;}
+.content .login-form .tip.no {margin-top:0;}
+.content .login-form .form-title{margin: 30px 0 24px 0; font-size:14px; color: #666666;}
+.content .login-form .form-item { height:48px; border:1px solid #dcdcdc;}
+.content .login-form .form-item.no {border:none;}
+.content .login-form .form-item.active {border:1px solid #86c8fb;}
+.main .forget-form .form-item.active {border:1px solid #86c8fb;}
+.content .login-form .btn-login {background-color: #0593fd; display: block;width:100%;height:100%;text-align: center; font-size:18px; color: #ffffff;font-weight: bold;border:none;font-family: 微软雅黑; cursor: pointer;
+    box-shadow: -1px 1px 5px #0593fd;}
+    
+/*  validate */
+.content .login-form .form-item.error {border:1px solid #fd8b4c;}
+.content .login-form .tip>label.error {color:#ff7920;}
+.form-item.err {border:1px solid #ff7920 !important;}
+label.err {color: #ff7920;}
+.form-item.p.err {border:1px solid #f3564a !important;}
+label.p.err {color: #f3564a;}
+/* validate end*/
+
+.content .login-form .form-item.p.error {}
+.content .login-form .name-label {float:left; height:46px; width:12%;background: url(../images/sprite.png) no-repeat 12px 12px;display: inline-block;}
+.content .login-form .pwd-label {float:left; height:46px; width:12%;background: url(../images/sprite.png) no-repeat 12px -25px;display: inline-block;}
+.content .form-item .chk {background: url(../images/sprite.png) no-repeat 0 -71px; padding-left: 16px; cursor: pointer;}
+.content .form-item .chk.selected {background: url(../images/sprite.png) no-repeat -16px -71px; padding-left: 16px;}
+.content .form-item #reset, #remember {font-size: 12px; color: #999999; margin-left: 4px; }
+.content .form-item a#reset:hover {color:#888787;}
+
+.content .wave {position:absolute;width:100%;height:200px;background:url(../images/bg_deline.png);bottom:0;z-index:1;}
+
+/* footer */
+.footer {height:14px;background-color:#ffffff;text-align:center; padding:24px 0;font-size:12px;color:#666666;}
+/* footer end*/
+
+
+/* forget pwd*/
+.main {height:634px;position:relative;}
+@media (min-width:1200px) {.main {background:url(../images/bg.png);}}
+@media (max-width:1200px) {.main .wrap {background:url(../images/bg.png); height:634px;}}
+
+.main .forget-form button {border:none;}
+.main .forget-panel {height:518px; background-color:#ffffff;position:relative;top:40px;width:1100px; margin:0 auto;}
+.main .forget-panel .forget-form {margin:0 auto; width:328px;}
+.main .forget-panel img{padding: 10px;}
+.main .forget-panel div.mascot_tip{padding: 160px 0 0 450px;display:none;}
+.main .forget-panel p.mascot_tip {text-indent: 25px; color:#737373;font-size: 13px;display:none;}
+.main .forget-panel p.mascot_tip>a{color:#0090FF;}
+.main .forget-form .form-item.inline {}
+.main .forget-form .form-item.inline>label {}
+.main .forget-form .form-item.inline>input {}
+.main .forget-form .form-item { height:48px; border:1px solid #dcdcdc;}
+.main .forget-form .form-item.no { border:none;height:50px;}
+.main .forget-form .form-item.no.c {height:40px;}
+.main .forget-panel .forget-form .form-title {padding:40px 0 24px 0;color:#666;font-size:14px;}
+.main .forget-form input {border:none; outline: none; font-size:14px; width: 84%; float:left; padding: 14px 0 14px 10px;line-height: 20px; font-family: 微软雅黑;}
+.main .forget-form .input-v {width: 74%;}
+.main .forget-form .btn-v {float: right;height:50px;width:110px;background-color:#ceeaff;outline:none;cursor:pointer;color:#0090ff;font-family:"微软雅黑";font-size:12px;}
+.main .forget-form .btn-v.in {background-color:#e7e7e7;outline:none;cursor:pointer;color:#0090ff;font-size:12px;}
+
+.main .forget-form label.label-v {width:40px;}
+
+.main .forget-form .tip {height:22px; margin-top:6px;}
+.main .forget-form label {float:left; height:48px; width:12%;display: inline-block;}
+.main .forget-form label.label-a {background: url(../images/sprite.png) no-repeat 12px 12px;}
+.main .forget-form label.label-p {background: url(../images/sprite.png) no-repeat 12px -23px;}
+.main .forget-form label.label-v {background: url(../images/sprite.png) no-repeat -22px 10px;}
+.main .forget-form .btn-confirm {background-color: #0593fd; display: block;width:100%;height:100%;text-align: center; font-size:18px; color: #ffffff;font-weight: bold;border:none;font-family: 微软雅黑; cursor: pointer;
+    box-shadow: -1px 1px 5px #0593fd;}
+#copyright {position:absolute;bottom:0;height:16px; padding:30px 0; text-align:center;font-size:12px;background:url(../images/bg_deline.png);width:100%;color:#ffffff;}
+/* forget pwd end */
+
+
+/* forget validate */
+.main .forget-form .form-item.error {border:1px solid #fd8b4c;}
+.main .forget-form .tip>label.error {color:#ff7920;}
+.main .forget-form p.error {color: #f3564a;}

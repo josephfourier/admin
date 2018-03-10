@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.enrollment.dao.mapper.EnrollChargedetailSpecialtyMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.enrollment.dao.model.EnrollChargedetailSpecialty">
+    <id column="detail_id" jdbcType="INTEGER" property="detailId" />
+    <id column="specialty_code" jdbcType="VARCHAR" property="specialtyCode" />
+    <id column="year" jdbcType="INTEGER" property="year" />
+    <id column="school_code" jdbcType="VARCHAR" property="schoolCode" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+  </resultMap>
+  <resultMap id="BaseResultMapDto" type="com.thinkjoy.enrollment.dao.model.enrollDto.ChargedetailSpeciaaltyDto">
+        <result column="detail_id" jdbcType="INTEGER" property="detailId" />
+        <result column="specialty_code" jdbcType="VARCHAR" property="specialtyCode" />
+        <result column="year" jdbcType="INTEGER" property="year" />
+        <result column="school_code" jdbcType="VARCHAR" property="schoolCode" />
+        <result column="item_id" jdbcType="INTEGER" property="itemId" />
+        <result column="itemName" jdbcType="VARCHAR" property="itemName" />
+        <result column="specialtyName" jdbcType="VARCHAR" property="specialtyName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    detail_id, specialty_code, year, school_code, item_id
+  </sql>
+  <select id="selectByExample" parameterType="com.thinkjoy.enrollment.dao.model.EnrollChargedetailSpecialtyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from enroll_chargedetail_specialty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from enroll_chargedetail_specialty
+    where detail_id = #{detailId,jdbcType=INTEGER}
+      and specialty_code = #{specialtyCode,jdbcType=VARCHAR}
+      and year = #{year,jdbcType=INTEGER}
+      and school_code = #{schoolCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from enroll_chargedetail_specialty
+    where detail_id = #{detailId,jdbcType=INTEGER}
+      and specialty_code = #{specialtyCode,jdbcType=VARCHAR}
+      and year = #{year,jdbcType=INTEGER}
+      and school_code = #{schoolCode,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.enrollment.dao.model.EnrollChargedetailSpecialtyExample">
+    delete from enroll_chargedetail_specialty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.enrollment.dao.model.EnrollChargedetailSpecialty">
+    insert into enroll_chargedetail_specialty (detail_id, specialty_code, year, 
+      school_code, item_id)
+    values (#{detailId,jdbcType=INTEGER}, #{specialtyCode,jdbcType=VARCHAR}, #{year,jdbcType=INTEGER}, 
+      #{schoolCode,jdbcType=VARCHAR}, #{itemId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thinkjoy.enrollment.dao.model.EnrollChargedetailSpecialty">
+    insert into enroll_chargedetail_specialty
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailId != null">
+        detail_id,
+      </if>
+      <if test="specialtyCode != null">
+        specialty_code,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="schoolCode != null">
+        school_code,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailId != null">
+        #{detailId,jdbcType=INTEGER},
+      </if>
+      <if test="specialtyCode != null">
+        #{specialtyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="schoolCode != null">
+        #{schoolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.enrollment.dao.model.EnrollChargedetailSpecialtyExample" resultType="java.lang.Long">
+    select count(*) from enroll_chargedetail_specialty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update enroll_chargedetail_specialty
+    <set>
+      <if test="record.detailId != null">
+        detail_id = #{record.detailId,jdbcType=INTEGER},
+      </if>
+      <if test="record.specialtyCode != null">
+        specialty_code = #{record.specialtyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.year != null">
+        year = #{record.year,jdbcType=INTEGER},
+      </if>
+      <if test="record.schoolCode != null">
+        school_code = #{record.schoolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemId != null">
+        item_id = #{record.itemId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update enroll_chargedetail_specialty
+    set detail_id = #{record.detailId,jdbcType=INTEGER},
+      specialty_code = #{record.specialtyCode,jdbcType=VARCHAR},
+      year = #{record.year,jdbcType=INTEGER},
+      school_code = #{record.schoolCode,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.enrollment.dao.model.EnrollChargedetailSpecialty">
+    update enroll_chargedetail_specialty
+    <set>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=INTEGER}
+      and specialty_code = #{specialtyCode,jdbcType=VARCHAR}
+      and year = #{year,jdbcType=INTEGER}
+      and school_code = #{schoolCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thinkjoy.enrollment.dao.model.EnrollChargedetailSpecialty">
+    update enroll_chargedetail_specialty
+    set item_id = #{itemId,jdbcType=INTEGER}
+    where detail_id = #{detailId,jdbcType=INTEGER}
+      and specialty_code = #{specialtyCode,jdbcType=VARCHAR}
+      and year = #{year,jdbcType=INTEGER}
+      and school_code = #{schoolCode,jdbcType=VARCHAR}
+  </update>
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+  <select id="selectchargespecialtyBean" parameterType="java.util.Map" resultType="com.thinkjoy.enrollment.dao.model.enrollDto.ChargedetailSpeciaaltyDto" resultMap="BaseResultMapDto">
+        select a.detail_id as detailId,
+                a.item_id as itemId,
+                a.specialty_code as specialtyCode,
+                a.year as year,
+                a.school_code as schoolCode,
+                b.item_name as itemName,
+                d.specialty_name as specialtyName
+        from enroll_chargedetail_specialty as a
+        LEFT JOIN enroll_chargeitem as b ON a.item_id=b.item_id
+        LEFT JOIN ucenter_specialty as d ON a.specialty_code=d.specialty_code
+        <where>
+            <if test="schoolCode != null">
+                and a.school_code = #{schoolCode,jdbcType=VARCHAR}
+            </if>
+            <if test="year != null">
+                and a.year = #{year,jdbcType=INTEGER}
+            </if>
+            <if test="itemId != null">
+                and a.item_id = #{itemId,jdbcType=INTEGER}
+            </if>
+            <if test="specialtyCode != null">
+                and a.specialty_code = #{specialtyCode,jdbcType=VARCHAR}
+            </if>
+            <if test="detailId != null">
+                and a.detail_id = #{detailId,jdbcType=INTEGER}
+            </if>
+        </where>
+  </select>
+  <select id="selectchargeBean" parameterType="java.util.Map" resultType="com.thinkjoy.enrollment.dao.model.enrollDto.ChargedetailSpeciaaltyDto" resultMap="BaseResultMapDto">
+        select a.detail_id as detailId,
+        a.item_id as itemId,
+        a.specialty_code as specialtyCode,
+        a.year as year,
+        a.school_code as schoolCode,
+        b.item_name as itemName,
+        d.specialty_name as specialtyName
+        from enroll_chargedetail_specialty as a
+        LEFT JOIN enroll_chargeitem as b ON a.item_id=b.item_id
+        LEFT JOIN ucenter_specialty as d ON a.specialty_code=d.specialty_code
+        <where>
+            <if test="schoolCode != null">
+                and a.school_code = #{schoolCode,jdbcType=VARCHAR}
+            </if>
+            <if test="year != null">
+                and a.year = #{year,jdbcType=INTEGER}
+            </if>
+            <if test="itemId != null">
+                and a.item_id = #{itemId,jdbcType=INTEGER}
+            </if>
+            <if test="specialtyCode != null">
+                and a.specialty_code = #{specialtyCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+  </select>
+
+</mapper>

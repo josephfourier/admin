@@ -1,0 +1,45 @@
+dl, dt, dd, ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.picker-box-specialty {
+    -webkit-user-select: none;
+}
+
+.picker-box-specialty dt {
+    background-color: #eeeeee;
+    padding: 5px 20px;
+}
+
+.picker-box-specialty dd {
+    padding: 8px 20px;
+    font-size: 15px;
+    color: #333333;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.specialty-picker, .direction-picker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    overflow: auto;
+    width: 100%;
+}
+
+.direction-picker li {
+    padding: 10px 20px;
+    font-size: 15px;
+    border-bottom: 1px solid #eeeeee;
+    color: #333333;
+}

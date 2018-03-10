@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkjoy.ucenter.dao.mapper.UcenterTeacherMapper">
+  <resultMap id="BaseResultMap" type="com.thinkjoy.ucenter.dao.model.UcenterTeacher">
+    <id column="teacher_id" jdbcType="INTEGER" property="teacherId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="teacher_code" jdbcType="VARCHAR" property="teacherCode" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="mail" jdbcType="VARCHAR" property="mail" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="origin" jdbcType="VARCHAR" property="origin" />
+    <result column="politics" jdbcType="VARCHAR" property="politics" />
+    <result column="worktime" jdbcType="DATE" property="worktime" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="ctime" jdbcType="BIGINT" property="ctime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="school_code" jdbcType="VARCHAR" property="schoolCode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    teacher_id, user_id, teacher_name, department_id, department_name, teacher_code, 
+    phone, idcard, sex, birthday, mail, nation, origin, politics, worktime, education, 
+    creator, ctime, description, status, school_code
+  </sql>
+  <select id="selectByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterTeacherExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ucenter_teacher
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ucenter_teacher
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ucenter_teacher
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterTeacherExample">
+    delete from ucenter_teacher
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.thinkjoy.ucenter.dao.model.UcenterTeacher">
+    insert into ucenter_teacher (teacher_id, user_id, teacher_name, 
+      department_id, department_name, teacher_code, 
+      phone, idcard, sex, 
+      birthday, mail, nation, 
+      origin, politics, worktime, 
+      education, creator, ctime, 
+      description, status, school_code
+      )
+    values (#{teacherId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, 
+      #{departmentId,jdbcType=INTEGER}, #{departmentName,jdbcType=VARCHAR}, #{teacherCode,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=DATE}, #{mail,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, 
+      #{origin,jdbcType=VARCHAR}, #{politics,jdbcType=VARCHAR}, #{worktime,jdbcType=DATE}, 
+      #{education,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{ctime,jdbcType=BIGINT}, 
+      #{description,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{schoolCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="teacherId" parameterType="com.thinkjoy.ucenter.dao.model.UcenterTeacher">
+    insert into ucenter_teacher
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="teacherId != null">
+        teacher_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="teacherName != null">
+        teacher_name,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="departmentName != null">
+        department_name,
+      </if>
+      <if test="teacherCode != null">
+        teacher_code,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="idcard != null">
+        idcard,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="mail != null">
+        mail,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="origin != null">
+        origin,
+      </if>
+      <if test="politics != null">
+        politics,
+      </if>
+      <if test="worktime != null">
+        worktime,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="schoolCode != null">
+        school_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null">
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentName != null">
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherCode != null">
+        #{teacherCode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="mail != null">
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="origin != null">
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="politics != null">
+        #{politics,jdbcType=VARCHAR},
+      </if>
+      <if test="worktime != null">
+        #{worktime,jdbcType=DATE},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolCode != null">
+        #{schoolCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.thinkjoy.ucenter.dao.model.UcenterTeacherExample" resultType="java.lang.Long">
+    select count(*) from ucenter_teacher
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ucenter_teacher
+    <set>
+      <if test="record.teacherId != null">
+        teacher_id = #{record.teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.teacherName != null">
+        teacher_name = #{record.teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentId != null">
+        department_id = #{record.departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.departmentName != null">
+        department_name = #{record.departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherCode != null">
+        teacher_code = #{record.teacherCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null">
+        idcard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.mail != null">
+        mail = #{record.mail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nation != null">
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.origin != null">
+        origin = #{record.origin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.politics != null">
+        politics = #{record.politics,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worktime != null">
+        worktime = #{record.worktime,jdbcType=DATE},
+      </if>
+      <if test="record.education != null">
+        education = #{record.education,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null">
+        creator = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ctime != null">
+        ctime = #{record.ctime,jdbcType=BIGINT},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.schoolCode != null">
+        school_code = #{record.schoolCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ucenter_teacher
+    set teacher_id = #{record.teacherId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      teacher_name = #{record.teacherName,jdbcType=VARCHAR},
+      department_id = #{record.departmentId,jdbcType=INTEGER},
+      department_name = #{record.departmentName,jdbcType=VARCHAR},
+      teacher_code = #{record.teacherCode,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      idcard = #{record.idcard,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      mail = #{record.mail,jdbcType=VARCHAR},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      origin = #{record.origin,jdbcType=VARCHAR},
+      politics = #{record.politics,jdbcType=VARCHAR},
+      worktime = #{record.worktime,jdbcType=DATE},
+      education = #{record.education,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      ctime = #{record.ctime,jdbcType=BIGINT},
+      description = #{record.description,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      school_code = #{record.schoolCode,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thinkjoy.ucenter.dao.model.UcenterTeacher">
+    update ucenter_teacher
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null">
+        teacher_name = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentName != null">
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherCode != null">
+        teacher_code = #{teacherCode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="mail != null">
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="origin != null">
+        origin = #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="politics != null">
+        politics = #{politics,jdbcType=VARCHAR},
+      </if>
+      <if test="worktime != null">
+        worktime = #{worktime,jdbcType=DATE},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null">
+        ctime = #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolCode != null">
+        school_code = #{schoolCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thinkjoy.ucenter.dao.model.UcenterTeacher">
+    update ucenter_teacher
+    set user_id = #{userId,jdbcType=INTEGER},
+      teacher_name = #{teacherName,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      teacher_code = #{teacherCode,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      mail = #{mail,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      origin = #{origin,jdbcType=VARCHAR},
+      politics = #{politics,jdbcType=VARCHAR},
+      worktime = #{worktime,jdbcType=DATE},
+      education = #{education,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=BIGINT},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      school_code = #{schoolCode,jdbcType=VARCHAR}
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectUcenterTeacherByPostId" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    t.teacher_id as teacher_id,
+    t.user_id as user_id,
+    t.teacher_name as teacher_name,
+    t.department_id as department_id,
+    t.department_name as department_name,
+    t.teacher_code as teacher_code,
+    t.phone as phone,
+    t.idcard as idcard,
+    t.sex as sex,
+    t.birthday as birthday,
+    t.mail as mail,
+    t.nation as nation,
+    t.origin as origin,
+    t.politics as politics,
+    t.worktime as worktime,
+    t.education as education,
+    t.creator as creator,
+    t.ctime as ctime,
+    t.description as description,
+    t.status as status,
+    t.school_code as school_code
+    from ucenter_teacher t
+    INNER JOIN ucenter_teacher_post tp on tp.teacher_id=t.teacher_id
+    <where>
+      tp.post_id=#{postId,jdbcType=INTEGER} and t.school_code=#{schoolCode,jdbcType=VARCHAR}
+    </where>
+  </select>
+
+  <resultMap id="teacherDataScopeMap" type="com.thinkjoy.ucenter.dao.model.ucenterDto.UcenterTeacherDto">
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
+    <collection property="departmentInfos" javaType="java.util.List" ofType="com.thinkjoy.ucenter.dao.model.ucenterDto.DepartmentInfo">
+      <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+      <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+      <result column="post_name" jdbcType="VARCHAR" property="postName" />
+      <result column="teacher_level" jdbcType="VARCHAR" property="teacherLevel" />
+      <collection property="busInfoes"  javaType="java.util.List"  ofType="com.thinkjoy.ucenter.dao.model.ucenterDto.BusInfo">
+        <result property="busId" column="bus_id" jdbcType="VARCHAR"/>
+      </collection>
+    </collection>
+
+  </resultMap>
+
+  <resultMap id="busInfoMap" type="com.thinkjoy.ucenter.dao.model.ucenterDto.BusInfo">
+        <result property="busId" column="bus_id" jdbcType="VARCHAR"/>
+  </resultMap>
+
+
+  <select id="getBusInfo" parameterType="java.lang.Integer" resultMap="busInfoMap">
+        SELECT udb.bus_id FROM ucenter_department_bus udb
+          WHERE udb.department_id = ${departmentId}
+  </select>
+
+  <select id="selectDataScopeUcenterTeacherInfoByAppIdAndRelationCode" parameterType="map" resultMap="teacherDataScopeMap">
+      SELECT
+      uu.username ,
+      ut.teacher_name ,
+      utp.department_id,
+      ud.department_name ,
+      up.post_name ,
+      up.teacher_level,
+      udb.bus_id
+    from ucenter_teacher ut
+    LEFT JOIN ucenter_teacher_post utp on ut.teacher_id = utp.teacher_id
+    LEFT JOIN ucenter_department ud on ud.department_id = utp.department_id
+    LEFT JOIN ucenter_post up on utp.post_id = up.post_id
+    LEFT JOIN ucenter_user uu on uu.user_id = ut.user_id
+
+    LEFT JOIN ucenter_department_bus udb
+    on udb.department_id = utp.department_id
+
+    <choose>
+      <when test="userId != null">
+        WHERE uu.user_id=#{userId} AND ut.school_code = #{relationCode}
+      </when>
+      <otherwise>
+        WHERE  uu.user_id in
+        (SELECT aua.user_id from ams_user_approle aua
+        LEFT JOIN ams_approle aa on aua.approle_id = aa.approle_id
+        WHERE aa.usertype_id=#{usertypeId} AND aa.relation_code = #{relationCode} AND aa.app_id = #{appId}
+        )
+      </otherwise>
+    </choose>
+
+  </select>
+</mapper>
